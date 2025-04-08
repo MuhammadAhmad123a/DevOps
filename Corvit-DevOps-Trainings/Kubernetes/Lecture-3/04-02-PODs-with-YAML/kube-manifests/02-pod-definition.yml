@@ -1,0 +1,15 @@
+apiVersion: v1 # String
+kind: Pod # String
+metadata: # Dictionary
+  name: myapp-pod
+  labels: # Dictionary
+    app: myapp  # Key value pairs
+spec:
+  containers: # List
+    - name: app
+      image: stacksimplify/kubenginx:1.0.0
+      ports: 
+        - containerPort: 80
+
+
+  

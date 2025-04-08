@@ -1,0 +1,93 @@
+1. What is Ethernet?
+Ans: Ethernet is the traditional technology for connecting devices in a wired local area network (LAN) or wide area network (WAN). 
+     It enables devices to communicate with each other via a protocol, which is a set of rules or common network language.
+
+2. What is a MAC address? What is it used for?
+Ans: A Media Access Control address (MAC address) is a hardware identifier that uniquely identifies each device on a network. 
+     Primarily, the manufacturer assigns it. They are often found on a device's network interface controller (NIC) card.
+     A MAC address is responsible for local identification and an IP address for global identification.
+
+3. When is this MAC address used?: ff:ff:ff:ff:ff:ff
+Ans: This address is used to transmit data to all of the hosts on the local subnet. (Ethernet Broadcast)
+
+4. What is a private IP address? In which scenarios/system designs, one should use it?
+Ans: Private IP addresses let devices connected to the same network communicate with one another without connecting to the entire internet. 
+     By making it more difficult for an external host or user to establish a connection, private IPs help bolster security within a specific network, like in your home or office.
+
+5. What is a public IP address? In which scenarios/system designs, one should use it?
+Ans: A public IP address identifies you to the wider internet so that all the information you're searching for can find you.
+     All servers and sites on the Internet use public IP addresses (for example, google.com — 172.217. 22.14, Google's DNS server — 8.8. 8.8). 
+     All public IP addresses on the Internet are unique to their host or server and cannot duplicate.
+
+     The private IP addresses range from: 10.0.0.0 to 10.255.255.255, 172.16.0.0 to 172.31.255.255, and 192.168.0.0 to 192.168.255.255.
+     Except for private IP addresses, all other IP addresses are public IP.
+
+6. What is CSMA/CD? Is it used in modern ethernet networks?
+Ans: Carrier-sense multiple access with collision detection (CSMA/CD) is a medium access control (MAC) method used most notably in early Ethernet technology for local area networking. 
+     It uses carrier-sensing to defer transmissions until no other stations are transmitting.
+     CSMA/CD was used in shared media Ethernet variants(10BASE2,10BASE5) and in the early versions of twisted pair Ethernet that used repeater hubs. 
+     But nowadays, modern Ethernet networks are built with switches and full-duplex connections so that CSMA/CD is no longer used.
+
+7. What is a proxy? How does it works? What do we need it for?
+Ans: A proxy server is an intermediary server that retrieves data from an Internet source, such as a webpage, on behalf of a user. 
+     They act as additional data security boundaries protecting users from malicious activity on the internet. 
+     Proxy servers have many different uses, depending on their configuration and type.
+     It allows the user to make indirect requests and receive responses from other network services.
+
+8. How does SSL handshake work?
+Ans:  
+    The client sends a request to the server for a secure session. The server responds by sending its X.509 digital certificate to the client.
+    The client receives the server's X.509 digital certificate.
+    The client authenticates the server, using a list of known certificate authorities.
+    The client generates a random symmetric key and encrypts it using server's public key.
+    The client and server now both know the symmetric key and can use the SSL encryption process to encrypt and decrypt the information contained in the client request and the server response.
+
+9. Explain “default gateway”
+Ans: The default gateway is the path used to pass information when the device doesn't know where the destination is. 
+     More directly, a default gateway is a router that connects your host to remote network segments. 
+     It's the exit point for all the packets in your network that have destinations outside your network.
+
+10. What is ARP? How does it works?
+Ans: ARP is Address Resolution Protocol, it is used to resolve IP addresses into MAC addresses, meaning the IP address is already known, but the Mac is not. 
+     The reason why we need ARP is because computers need to know both the IP address and the MAC address of a destination before they can start network communication.
+     ARP broadcasts a request packet to all the machines on the LAN and asks if any of the machines are using that particular IP address. 
+     When a machine recognizes the IP address as its own, it sends a reply so ARP can update the cache for future reference and proceed with the communication.
+
+11. What is TTL? What does it helps to prevent?
+Ans: TTL is deployed as a counter or timestamp embedded in each packet. When the predefined timespan or event count expires, the packet is either discarded or revalidated. 
+     In networking, TTL prevents data packets from moving across the network indefinitely.
+
+12. What is SSL tunneling? How does it works?
+Ans: SSL Tunneling involves a client that requires an SSL connection to a backend service or secure server via a proxy server. T
+     This proxy server opens the connection between the client and the backend service and copies the data to both sides without any direct interference in the SSL connection.
+
+13. Where can you see the list of sockets in your system?
+Ans: Windows: netstat -a -o -n -b
+     Linux: netstat -4 -6 -a -n -p
+
+14. What is VLAN?
+Ans: A virtual local area network (VLAN) is a virtualized connection that connects multiple devices and network nodes from different LANs into one logical network.
+
+15. What is MTU?
+Ans: In networking, maximum transmission unit (MTU) is a measurement representing the largest data packet that a network-connected device will accept. 
+     Imagine it as being like a height limit for freeway underpasses or tunnels: Cars and trucks that exceed the height limit cannot fit through, just as packets that exceed the MTU of a network cannot pass through that network.
+
+16. What happens if you send a packet that is bigger than the MTU?
+Ans: The device would fragment the packet into two smaller packets before forwarding the data.
+
+17. What is ICMP? What is it used for?
+Ans: ICMP is a network level protocol. ICMP messages communicate information about network connectivity issues back to the source of the compromised transmission. 
+     It sends control messages such as destination network unreachable, source route failed, and source quench
+
+18. What is the difference if any between SSL and TLS?
+Ans: Transport Layer Security (TLS) is the successor protocol to SSL. TLS is an improved version of SSL. It works in much the same way as the SSL, using encryption to protect the transfer of data and information. 
+     The two terms are often used interchangeably in the industry although SSL is still widely used.
+
+19. DDOS Attack?
+Ans: DDoS (Distributed Denial of Service) is a category of malicious cyber-attacks that hackers or cybercriminals employ in order to make an online service, network resource or host machine unavailable to its intended users on the Internet.
+     Simple DDoS attacks can often be blocked using skilled internal resources. 
+     Yet, keep in mind that even basic DDoS attacks may need to be blocked upstream with the help of the host internet service provider (ISP) or else the blocked DDoS attack traffic can still threaten connection bandwidths and ISP infrastructure.
+
+20. What is a Virtual Private Network?
+Ans: A VPN (virtual private network) is a service that creates a safe, encrypted online connection. 
+     Internet users may use a VPN to give themselves more privacy and anonymity online or circumvent geographic-based blocking and censorship.

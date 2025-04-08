@@ -1,0 +1,8 @@
+variables:
+- name: var1
+  value: something
+- name: var2
+  value: nothing
+- name: var3
+  value: everything
+- group: pipeline-variable-group

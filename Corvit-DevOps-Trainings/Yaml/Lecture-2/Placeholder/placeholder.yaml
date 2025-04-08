@@ -1,0 +1,5 @@
+# Placehodler
+
+Student: 
+  name: {{.values.attributes.name}}
+  roll_no: {{.values.attributes.roll_no}}

@@ -1,0 +1,7 @@
+image: 
+  name: nginx
+  tag: latest
+  pullPolicy: ifNotPresent
+replicas: 2
+ports: 
+ containerPort: 80 

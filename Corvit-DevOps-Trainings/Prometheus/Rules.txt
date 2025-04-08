@@ -1,0 +1,164 @@
+# Custom Rule 
+
+Find the below metric and execute it. 
+node_memory_Memfree_bytes 
+
+if We want to see the percentage we set the metric like 
+100-(100*node_memory_Memfree_bytes / node_memory_MemTotal_bytes)
+
+But if we want to store this query and run again again, then we would create a custome rule. 
+
+Go to terminal
+
+cd /usr/local/bin/prometheus
+sudo nano prometheus_rules.yml
+groups:
+- name: custom_rules
+  rules:
+    - record: node_memory_MemFree_in_percent
+      expr: 100 - (100 * node_memory_MemFree_bytes / node_memory_MemTotal_bytes)
+
+save the file
+
+./promtool check rules prometheus_rules.yml
+
+/usr/local/bin/prometheus$ sudo nano prometheus.yml
+
+Under rule_files:
+       - "prometheus_rules.yml"
+save the file
+
+sudo systemctl daemon-reload
+sudo service prometheus restart
+sudo service prometheus status
+
+Switch back to GUI
+
+now search metric node_memory_MemFree_in_percent and execute. 
+you can also check the custom rule in GUI as well
+
+--------------------------------------
+
+# Alert Rule
+sudo nano prometheus_rules.yml
+
+groups:
+- name: custom_rules
+  rules:
+    - record: node_memory_MemFree_in_percent
+      expr: 100 - (100 * node_memory_MemFree_bytes / node_memory_MemTotal_bytes)
+- name: alert_rules
+  rule: 
+    - alert: InstanceDown
+      expr: up==0
+      for: 1m
+      labels: 
+          severity: critical
+      annotations: 
+            summary: "Instance [{{ $labels.instance }}] down"
+            description: "Instance [{{ $labels.instance }}] of job [{{ $labels.job }}] has been down for more than 1 minute"
+
+save the file 
+./promtool check rules prometheus_rules.yml
+sudo systemctl daemon-reload
+sudo service prometheus restart
+sudo service prometheus status
+
+Switch to GUI and Check Alert Rule. 
+Look for Up metric and chek it 
+
+-----------------------------------------------------
+
+#Alert Manager
+
+wget https://github.com/prometheus/alertmanager/releases/download/v0.25.0/alertmanager-0.25.0.linux-amd64.tar.gz
+
+sudo tar -xvf alertmanager-0.25.0.linux-amd64.tar.gz
+
+cd alertmanager-0.25.0.linux-amd64
+
+sudo cp -r . /usr/local/bin/alertmanager
+
+sudo nano /etc/systemd/system/alertmanager.service
+
+[Unit]
+Description=Prometheus Alert Manager 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/alertmanager --config.file=/usr/local/bin/alertmanager/alertmanager.yml
+
+[Install]
+WantedBy=multi.user.target
+
+save file
+
+cd /usr/local/bin/alertmanager
+
+sudo nano alertmanager.yml
+
+global: 
+  resolve_timeout: 5m 
+
+route: 
+  group_by: [Alertname]
+  group_interval: 30s
+  repeat_interval: 30s
+  # Send all notification to me
+  reciever: email-me
+recievers:
+- name :email-me
+  email_configs: 
+  - send_resolved: true
+    to: muhammad.faran151@gmail.com
+    from: muhammad.faran151@gmail.com
+    smarthost: smtp.gmail.com:587
+    auth_username: "muhammad.faran151@gmail.com"
+    auth_identity: "muhammad.faran151@gmail.com"
+    auth_password: "********"
+inhibit_rules: 
+  - source_match: 
+        severity: 'Critical'
+    target_match: 
+        severity: "warning"
+    equal: ['alertname', 'dev', 'instance']
+
+save file
+sudo service alertmanager start
+sudo service alertmanager status
+
+ip:9093/#/alerts
+
+---------------------------
+
+# Config Alert Manager with Promtheus. 
+cd /usr/local/bin/prometheus
+sudo nano prometheus.yml
+
+#Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - alertmanager:9093
+
+save file
+sudo service prometheus restart
+sudo service prometheus status
+Now go to the GUI and check Alert Manager Endpoint
+Now check Target status. 
+Turn off one instance and check how the alerts goes. 
+
+sudo service node_exporter stop
+sudo service node_exporter status
+
+Now go back to GUI and check status of targets
+Execute Up query and Check Alerts 
+
+
+
+
+
+
+

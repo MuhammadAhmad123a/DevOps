@@ -1,0 +1,29 @@
+# Anchors
+services: 
+ wordpress: 
+   image: latest
+   restart: &restart_policy always
+   environment: &env_vars
+     app: webservice
+     env: production
+ mysql:
+  image:  mysql
+  restart: *restart_policy
+  environment: *env_vars
+
+---
+# Extensions 
+services: 
+ wordpress: 
+   image: latest
+   restart: &restart_policy always
+   environment: &env_vars
+     app: webservice
+     env: production
+ mysql:
+  image:  mysql
+  restart: *restart_policy
+  environment: 
+    type: database
+    <<: *env_vars
+    

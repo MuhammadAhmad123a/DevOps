@@ -1,0 +1,32 @@
+{
+    "consumer": {
+       "class": "AppBundle\\Entity\\consumer",
+       "attributes": {
+          "filters": [
+             "customer.search",
+             "customer.order",
+             "customer.boolean"
+          ]
+       },
+       "collectionOperations": {
+          "get": {
+             "method": "GET",
+             "normalization_context": {
+                "groups": [
+                   "customer_list"
+                ]
+             }
+          }
+       },
+       "itemOperations": {
+          "get": {
+             "method": "GET",
+             "normalization_context": {
+                "groups": [
+                   "customer_get"
+                ]
+             }
+          }
+       }
+    }
+ }

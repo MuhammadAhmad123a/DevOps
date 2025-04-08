@@ -1,0 +1,16 @@
+Create Service Principal or use an exiting one. 
+
+Create container registry.
+
+Assign ACRPull rights to this Service Principal at container registry.
+
+Create ImagePullSecret with service principal Application ID and Client Secret
+kubectl create secret docker-registry acr-secret --namespace default --docker-server=ACR_Name.azurecr.io --docker-username=Application_ID --docker-password=Client_Secret
+
+Create Pipeline with Docker Build and Push Template for the service connection. 
+
+Create environmnet for kubernetes resource in pipelines options.
+
+Configure the pipeline accordingly like the imagepullsecret value and also kubernetes service connection which would be created by environment.
+
+run pipeline and test.

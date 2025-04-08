@@ -1,0 +1,37 @@
+# using double quotes 
+url: "http://www.api-my.com/"
+
+username: "% abc"
+
+backslash: " \ "
+colon: ":"
+semi_colon: ";"
+underscore: "_"
+dollar: "$"
+at: "@"
+comma: ","
+paranthesis: "()"
+power: "^"
+space: " "
+ampersand: "&"
+
+# escaping quotes
+name: john' eric
+name1: john\u0027eric # where \u0027 is a single quote, \u0022 is a double quote.
+name2: john"&#x20;0eric # using entity escapes characters
+
+# unicodes 
+Space: "\u0020" # ( )
+Single quote: "\u0027" # (')
+Double quote: "\u0022" # (")
+Colon: "\u0003A" # (:)
+
+# escaping colon
+name3: "john: eric"
+name4: john\u0003Aeric
+name5: john&#58;0eric    # using entity escapes characters
+
+# newline and tab
+newline: "line1 \n line2" 
+tab: "str  \t str2"
+

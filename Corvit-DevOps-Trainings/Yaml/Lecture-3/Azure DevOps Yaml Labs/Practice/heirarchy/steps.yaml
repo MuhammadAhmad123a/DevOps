@@ -1,0 +1,20 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include: 
+      - /heirarchy/steps.yml
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- bash: |
+    which bash
+    echo Hello $name
+  displayName: Multiline Bash script
+  env:
+    name: Microsoft
+
+- script: echo Hello world!
+  displayName: Say hello

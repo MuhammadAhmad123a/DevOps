@@ -1,0 +1,35 @@
+# Set URI Tag 
+
+%TAG ! tag:hostsdata:phl:
+
+---
+host: phl-42
+datacenter:
+  location: Philadelphia
+  cab: "13"
+  cab_unit: "3"
+roles:
+ - webserver
+ - wp_database
+
+# Set Local tag 
+---
+host: phl-42
+datacenter:
+  location: ! PHL Philadelphia
+  cab: "13"
+  cab_unit: "3"
+roles:
+  - webserver
+  - wp_database
+
+# Set Datatype
+---
+host: phl-42
+datacenter:
+  location: ! PHL Philadelphia
+  cab: !!str 13
+  cab_unit: !!str 3
+roles:
+  - webserver
+  - wp_database

@@ -1,0 +1,125 @@
+Accessing two sites on different ports
+Create an EC2 Instance with Http and Https traffic enabled with Elastic IP (optional)
+
+Note: Remember to allow the port 81 or any other on which you want to access your website in EC2 Security Group
+
+Follow the guide to configure Nginx Server on Ubuntu Machine:
+https://ubuntu.com/tutorials/install-and-configure-nginx#1-overview
+
+--------------------------------------------------------------------------------
+
+Hosting website on Ubuntu EC2 machine while attacing Domain to it with SSl Certificate and Redirection Enabled. 
+
+Note: farantahir.online is the domain I had purchased from Hostinger, you need to create your own domain. 
+
+We are going to access website on port 80 so change the port of Default nginx configs to 81 and your virtual host configs to 80.  
+Your Tuturiol file should be like :
+
+etc/nginx/sites-enabled$ cat tutorial
+
+server {
+       listen 80;
+       listen [::]:80;
+
+       server_name farantahir.online;
+
+       root /var/www/tutorial;
+       index index.html;
+
+       location / {
+               try_files $uri $uri/ =404;
+       }
+}
+
+
+Configure DNS in Route 53:
+
+    Go to the AWS Management Console.
+    Open the Route 53 service.
+    Click on "Hosted zones" in the left sidebar.
+    Select your hosted zone for the domain farantahir.online.
+    Replace the Nameservers form Route 53 to your domain registrar in my case its hostinger. 
+
+
+
+Set up an Application Load Balancer (ALB):
+
+    Go to the AWS Management Console.
+    Open the EC2 service.
+    Click on "Load Balancers" in the left sidebar.
+    Click on "Create Load Balancer."
+    Select "Application Load Balancer."
+    Configure the load balancer:
+        Provide a name for your load balancer.
+        Select the VPC and availability zones.
+        Choose "Internet-facing" for the scheme.
+    Configure listeners:
+        Add an HTTP listener.
+        Create a target group for your EC2 instances.
+        Set the target type to "Instance" and configure the appropriate health checks(/).
+        add action to point to the target group
+        register the instance and wait for the instance to be healthy
+    Configure security settings (if you want to)  and create the load balancer
+
+
+
+Go to EC2 instance 
+$ cd /etc/nginx/sites-available
+$ sudo nano farantahir.online.conf
+
+server {
+    listen 80;
+    server_name farantahir.online;
+
+    location / {
+       try_files $uri $uri/ =404;
+    }
+}
+
+and save the file.
+
+Create a symbolic link in the sites-enabled directory:
+$ sudo ln -s /etc/nginx/sites-available/farantahir.online.conf /etc/nginx/sites-enabled/
+Test the Nginx configuration: 
+$ sudo nginx -t (Make sure it returns "syntax is okay" and "test is successful.")
+$ sudo service nginx restart
+
+Go to Route 53 
+
+    Create a new record set:
+        Click on "Create record set."
+        Enter the subdomain name (e.g., farantahir.online) in the "Name" field. (No need to enter anything if your domain doesn't require www)
+        Set the record type to "A" (IPv4 address).
+        Select "Yes" for "Alias" and choose your load balancer from the target drop-down list.
+        Click on "Create."
+
+After this browse Elastic IP, Load Balancer URL and you domain farantahir.online to access the site. If you can't access the site then you have to check which step is missing. 
+
+
+
+Now we attach SSL certificate. 
+
+Request an SSL Certificate in AWS Certificate Manager (ACM):
+
+    Go to the AWS Management Console.
+    Open the ACM service.
+    Click on "Request a certificate."
+    Select "Request a public certificate" and click "Request a certificate" again.
+    Enter your domain name (e.g., example.com) and any additional subdomains.
+    Choose validation method (DNS validation is recommended) and follow the instructions to complete the validation process.
+    Click on Create DNS Record and wait for ACM to come to active state. 
+    
+    Go to Load Balancer 
+    Add an HTTPS listener.
+    Select the ACM certificate you requested. 
+    In action forward it to target group. 
+    Now browse your application with https 
+    https://farantahir.online
+
+Now we Redirect http traffic to https
+
+Go to load Balancer and Configure Listners. 
+Change http listner settings from action "forward to target group" to "redirect to https" and give port 443
+Wait for some time and then browse your application with http, it would be redirected to https automatically. 
+http://farantahir.online -> https://farantahir.online
+

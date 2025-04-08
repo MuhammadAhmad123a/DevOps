@@ -1,0 +1,8 @@
+Create EC2 instance with Ubuntu OS. 
+
+Allow Http and RDP traffic
+
+Follow the guide to configure apache server on ubuntu. 
+https://ubuntu.com/tutorials/install-and-configure-apache#1-overview
+
+Note: Replace IP of EC2 against ServerName instead of the domain. 

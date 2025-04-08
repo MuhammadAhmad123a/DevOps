@@ -1,0 +1,34 @@
+# Simple Mapping  
+---
+host: phl-42
+student: harry
+
+# Sequence in a Mapping
+---
+student: marry
+hobbies:
+ - music
+ - dancing
+ - singing 
+
+# Nested Mapping
+---
+host: phl_42 
+datacenter:
+ location: canada
+ cab: 13 
+ cab_unit: 3
+
+ # OR
+ host: "phl-42"
+ datacenter: { location: canada , cab: 13 , cab_unit: 3 }
+
+ # Mixed mapping
+---
+student: john
+details:
+ fatherName: william
+ motherName: marry
+more:
+ - subject1
+ - subject2

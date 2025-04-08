@@ -1,0 +1,53 @@
+1- How to check open ports in linux and Windows? 
+Ans: https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command/
+
+2- What is Umask in linux?
+Ans: https://www.liquidweb.com/kb/what-is-umask-and-how-to-use-it-effectively/
+
+3- What happens when you try to curl to website ?
+Ans: https://github.com/alex/what-happens-when 
+
+4- Explain Kernel Space and User Space. 
+Ans: https://www.educative.io/answers/what-is-the-difference-between-the-kernel-and-user-spaces 
+     https://learnlinuxconcepts.blogspot.com/2014/02/kernel-space-and-user-space.html
+
+5- What are processes and threads? 
+Ans: https://binaryterms.com/process-in-operating-system.html 
+     https://byjus.com/gate/what-is-thread-in-operating-system-notes/
+
+6- What is Zombie process? 
+Ans: https://www.digitalocean.com/community/tutorials/process-management-in-linux 
+
+7- What are the performance tools you would use on Linux Machine? 
+Ans: uptime, top, vmstat and etc.  
+https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
+
+8- When I get a “filesystem is full” error, but “df” shows there is free space
+Ans: Check if you see zero IFree by using df -i . If that is not the case then see if deleted files are still in use using lsof and restart those processes
+
+9- Explain Linux Inodes. 
+Ans: https://www.stackscale.com/blog/inodes-linux/
+
+10- Explain Load Average ? 
+Ans: https://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html 
+
+11- How would you troubleshoot a High I/O Issue?
+Ans: a) Check Disk IO Performance on Linux
+     b) Check NFS IO performance issue on Linux
+     c) High iowaits on specific CPU cores
+    https://awstip.com/sre-devops-interview-questions-linux-troubleshooting-1b8ffe82c16
+
+12- Crash vs Panic 
+Ans: Crash usually happens when a trap occurs when the application trying to access memory incorrectly. 
+     Panic usually when the application kill/shutdown itself abruptly. 
+     Main difference between crash and panic is that crash is hardware or OS initiated and panic usually imitated by application by calling abort() function.
+
+13- Explain different type of task status ?
+Ans: https://linux-kernel-labs.github.io/refs/heads/master/lectures/processes.html#blocking-and-waking-up-tasks
+
+14- Explain STACK and HEAP in Operating System ?
+Ans: https://learnlinuxconcepts.blogspot.com/2014/02/stack-and-heap.html
+
+15- All Questions about commands and linux directories. 
+Ans: https://www.simplilearn.com/linux-commands-interview-questions-article
+     https://www.edureka.co/blog/interview-questions/linux-interview-questions-for-beginners/

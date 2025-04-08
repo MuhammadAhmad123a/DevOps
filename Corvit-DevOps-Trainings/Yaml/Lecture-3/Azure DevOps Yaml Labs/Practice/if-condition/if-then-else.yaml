@@ -1,0 +1,31 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include: 
+      - /if-condition/if-then-else.yaml
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+ VAR: 20
+    
+stages:
+- stage: stage
+  jobs:
+  - job: job
+    steps:
+       - task: Bash@3
+         displayName: "Bash Task"
+         inputs:
+           targetType: "inline"
+           failOnStderr: true
+           script: |
+             if [[ $VAR -gt 10 ]]
+             then
+              echo "The variable is greater than 10. value = $VAR"
+             else
+              echo "Not greater than 10"
+             fi

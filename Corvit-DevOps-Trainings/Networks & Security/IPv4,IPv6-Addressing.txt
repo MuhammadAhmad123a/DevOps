@@ -1,0 +1,45 @@
+IPv4 : 32 bits, separated by a (.) 
+
+0.0.0.0 - 255.255.255.255
+
+0-255.0-255.0-255.0-255 
+
+1-254 (0-> network id, 255-> broadcast id) 
+
+IP address: 223.1.1.1 -> 11011111.00000001.00000001.00000001
+
+128 64 32 16 8 4 2 1 
+1   1  0  1  1 1 1 1 : 223
+0   0  0  0  0 0 0 1 : 1
+0   0  0  0  0 0 0 1 : 1
+0   0  0  0  0 0 0 1 : 1 
+
+Host Part -> 0
+Network Part -> 1
+
+Class A : N.H.H.H 
+Class B: N.N.H.H 
+Class C: N.N.N.H  223.1.1.1 223.1.1.2 223.1.1.3 -> 223.1.1.0 -> 223.1.1.1-254
+                223.1.2.1 223.1.2.2 223.1.2.3 ->   223.1.2.0  -> 223.1.2.1-254
+                223.2.1.1 223.2.1.2 223.2.1.3 -> 223.2.1.0 
+
+Subnet Mask identify the host and network part 
+Class A: 255.0.0.0
+Class B: 255.255.0.0
+Class C: 255.255.255.0 
+
+223.2.1.1 
+255.255.255.0 
+AND 
+223.2.1.0 -> network id
+ 
+223.2.1./1-254 -> host address range 
+223.2.1.1 -> 1st host address
+223.2.1.254 -> last host address  
+no of hosts: 2^no of host bits -> 2^8 = 256 (but we can use only 254 as 0 and 255 are dedicated for special purposes)
+
+IPv6 : 128 bits, separated by a (:)
+64 bits for Network, Host.
+in hexadecimal 
+No concept of classes but types unicast, anycast, and multicast
+2001:db8:3333:4444:5555:6666:7777:8888

@@ -1,0 +1,124 @@
+1. What is YAML?
+
+YAML is a data serialization format that is designed to be easy to read and write. 
+It is often used for configuration files, but can be used for other purposes as well.
+
+2. Can you explain what the acronym YAML stands for?
+
+YAML stands for “YAML Ain’t Markup Language”. 
+It is a data serialization format that is designed to be human-readable and easy to process by computers.
+
+3. Why do we need a data serialization language like YAML?
+
+Data serialization is the process of converting data structures or objects into a format that can be stored and transmitted. 
+This is necessary because different computers and programming languages often store and handle data differently. 
+YAML is one of many data serialization languages that helps to make data transfer possible between different systems.
+
+4. What are some common use cases of YAML?
+
+YAML is often used for configuration files, since it is easy to read and write. 
+It is also often used for data serialization, such as in transmitting data over a network or storing it in a database.
+
+5. What are the main features and benefits of using YAML?
+
+YAML is a data serialization format that is designed to be both human and machine readable. 
+It is often used for configuration files, but can be used for other purposes as well. 
+YAML is easy to learn and use, and is also relatively concise.
+
+6. How does YAML compare to JSON or XML?
+
+YAML is a data serialization format that is designed to be human-readable and easy to understand. 
+It is similar to JSON and XML, but it is not as verbose as XML. 
+This makes it a good choice for configuration files or other situations where you want the data to be easily readable by humans.
+
+7. Is it possible to use arrays in YAML? If yes, then how?
+
+Yes, it is possible to use arrays in YAML. Arrays can be created using either the standard YAML syntax or the shorthand syntax. 
+To create an array using the standard syntax, you will need to use the “-” character followed by a space, and then the value that you want to add to the array. For example:
+
+– value1
+– value2
+– value3
+
+To create an array using the shorthand syntax, you will need to use the “[” and “]” characters, and then list the values that you want to add to the array separated by commas.
+ For example:
+[value1, value2, value3]
+
+8. Is it possible to create comments in YAML? If so, then how can this be done?
+
+Yes, it is possible to create comments in YAML. To do so, you simply need to use the “#” symbol at the beginning of the line that you want to be considered a comment.
+
+9. Are there any limitations when using YAML with Python?
+
+Yes, there are a few limitations. One is that YAML cannot support all of Python’s data types. 
+For example, YAML cannot support Python’s complex data types, such as tuples and dictionaries with nested lists. Additionally, YAML cannot support Python’s class objects.
+
+10. How do you define a multiline string in YAML?
+
+You can use the “>” or "|" character to denote a multiline string in YAML. 
+Anything that follows the “>” character on the next line will be considered part of the string, until a new line is reached. For example:
+
+multiline_string: >
+This is a
+multiline string.
+
+11. Which version of YAML is supported by Salesforce?
+
+Salesforce supports version 1.1 of YAML.
+
+12. What’s the difference between YAML and YML?
+
+YAML and YML are both ways of writing data in a human-readable format. 
+YAML is the more common of the two, and is generally used for configuration files and data serialization. YML is a subset of YAML, and is often used for configuration files as well.
+
+13. What are anchors used for in YAML?
+
+Anchors are used in YAML to create aliases for pieces of data. This can be useful when you want to reuse a section of data multiple times without having to duplicate it.
+
+14. What is the best way to represent floating point numbers in YAML?
+
+The best way to represent floating point numbers in YAML is to use the “!!float” tag. This tag tells the YAML parser that the value should be parsed as a floating point number.
+
+15. How can you include special characters as part of a string value in YAML?
+
+You can use the “!” tag to indicate that the following character should be interpreted as a literal. 
+For example, if you wanted to include an exclamation point as part of a string, you would write it as “!exclamation point”.
+
+16. What are block literals and folded blocks?
+
+Block literals are YAML representations of multi-line strings. 
+Folded blocks are a type of block literal where the newlines between the lines of the string are removed. 
+This can be useful for making long strings more readable, or for removing unnecessary newlines from a string.
+
+17. What are flow collections in YAML?
+
+Flow collections are used to represent data structures in YAML. 
+Flow collections use a variety of different symbols to denote different data types, such as curly braces for objects, square brackets for arrays, and angle brackets for strings. 
+Flow collections are typically used when data is being serialized, such as when it is being converted from one format to another.
+
+18. What happens if an empty array is specified inside a mapping?
+
+If an empty array is specified inside a mapping, it will be ignored.
+
+19. What is your opinion on the security of YAML?
+
+I believe that YAML is a very secure format. 
+It is designed to be both human and machine readable, which makes it less likely for there to be errors that could lead to security vulnerabilities. 
+Additionally, the YAML specification includes a section on security considerations, which outlines various security risks and how to mitigate them.
+
+20. What are some real-world use cases of YAML?
+
+YAML is often used for configuration files, since it is easy for humans to read and write. 
+It is also used in data serialization, for example in storing data for AJAX calls in web applications.
+
+21. How do you create an empty Dictionary in yaml?
+
+employee: {}
+
+22. How do you create an empty array in yaml?
+
+array:[]
+
+23. How do you create an empty sequence?
+
+myvalue:[]

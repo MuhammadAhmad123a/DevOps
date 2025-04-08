@@ -1,0 +1,47 @@
+Cluster IAM Role:
+
+Go to the IAM service in the AWS Console.
+Navigate to Roles > Create role.
+Select EKS and choose EKS Cluster.
+Attach the AmazonEKSClusterPolicy to the role.
+Click Create role.
+
+Node IAM Role:
+
+Go to IAM > Roles > Create role.
+Select EC2 as the trusted entity.
+Attach the following policies to the role:
+AmazonEKSWorkerNodePolicy
+AmazonEC2ContainerRegistryReadOnly
+AmazonEKS_CNI_Policy
+AmazonEBSCSIDriverPolicy
+AmazonEFSCSIDriverPolicy
+Click Create role.
+
+Create EKS Cluster:
+
+Go to the EKS service in the AWS Console.
+Select Create Cluster.
+Fill in the necessary details such as:
+Cluster name.
+Region.
+Choose the Cluster IAM Role created earlier.
+Configure networking and other settings as needed.
+Click Create to launch the cluster.
+Create Node Group:
+After the cluster is created, navigate to the Node Groups tab.
+Select Add Node Group.
+Fill in the following details:
+Node Group name.
+IAM Role: Select the Node IAM Role created earlier.
+Choose the instance type as t2.micro.
+Configure scaling and networking options as needed.
+Click Create to add the node group to the cluster.
+Connect to the EKS Cluster:
+Configure AWS CLI with the necessary credentials:
+
+
+aws configure
+To connect to the EKS cluster, update the kubeconfig by running the following command:
+aws eks update-kubeconfig --region <region-name> --name <cluster-name>
+After running this command, your local Kubernetes configuration will be updated to connect to your EKS cluster, allowing interaction with the cluster using kubectl.

@@ -1,0 +1,25 @@
+---
+# Conventional Block Format
+# Favourite Movies
+ - Casablanca
+ - North by Northwest
+ - The Man Who Wasn't There
+
+ 
+--- 
+# Inline Format
+# Shopping list
+   [milk, groceries, eggs, juice, fruits]
+
+---
+# Folded Text
+- {name: John Smith,   age: 33}
+- name: Mary Smith
+  age: 27
+
+---
+# All Conventional 
+men: [John Smith, Bill Jones]
+women:
+  - Mary Smith
+  - Susan Williams

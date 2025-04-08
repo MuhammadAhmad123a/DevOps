@@ -1,0 +1,24 @@
+---
+ name: "bob"
+ address: "New York, USA"
+ age: 28
+ is_working: true
+ certifications: 8
+ hobbies:
+   - blogging
+   - cricket
+   - graphics_design
+   - teaching
+ work_experience: 
+  company_01: 
+     years: 2
+     role: "Junior DevOps Engineer"
+  company_02:
+    years: 4
+    role : "Senior DevOps Engineer"
+  company_03:
+    years: 3.5
+    role: "DevOps Architect"
+ social_accounts:
+    facebook: 1
+    youtube: 2 

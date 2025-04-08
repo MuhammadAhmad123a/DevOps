@@ -1,0 +1,93 @@
+# key 
+"apple": "I am a fruit"
+1: "it is my roll no"
+
+---
+#list 
+- apple
+- apple
+- orange
+
+---
+# String
+name: bob
+fruit: "apple"
+job: 'engineer'
+string1: string without quotes and escape sequence
+string2: string without quotes with \n sequence # escape sequence is not evaluated
+string3: "string with quotes and \n sequence" # escape sequence evaluated and would leave a line when executed
+
+
+# Multiline String
+multiline: |
+ this is how we use multiline strings
+ in yaml.
+
+# write a single line in multiple lines
+message: >
+ this will
+ all be 
+ in one single line 
+# or same as 
+message2: this will all be in one single line
+
+# Multiline String without whitespaces
+string_with_pipe: |-
+ this is how we use multiline strings
+ in yaml.
+string_with_fold: >-
+ this will
+ all be 
+ in one single line 
+
+---
+kuchbhi: 4567
+float: 89.99
+Boolean_false: No # n, N, no, false, False, FALSE
+Boolean_ture: yes # y, Y, Yes, true, True, TRUE
+not_a_num: .NAN
+infinity: .inf
+negetive_infinity: -.inf
+exponential: 1.414e+3
+---
+# specify the type
+zero: !!int 0
+positivenum: !!int 45
+negativenum: !!int -45
+octanum: !!int 06574
+hexa: !!int 0x45 
+
+---
+# Null
+surname: !!null Null # or null NULL ~
+~: this is a null key\
+name: 
+
+
+# Dates and Times
+date: 2022-12-31
+time: !!timestamp 2022-12-31 # UTC timezone by default
+pakistan_time:  2022-12-31T02:59:43.10 +5:00 # For Paistan UTC + 5
+no_time_zone: 2022-12-31T02:59:43.10 
+
+
+---
+# SET
+set_elements: !!set 
+ ? 1
+ ? 2
+ ? bob
+ ? DevOps
+
+
+# Pairs
+pairexample: !!pairs
+ - job: student
+ - job: teacher 
+# same as
+pair_example: !!pairs [job: student, job: teacher] # this will be an array of hashtables
+
+
+
+
+

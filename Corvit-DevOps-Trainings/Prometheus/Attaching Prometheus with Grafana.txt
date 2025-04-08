@@ -1,0 +1,31 @@
+sudo service node_exporter start
+sudo service node_exporter status
+
+/home/ubuntu/prometheus$ sudo nano prometheus.yml
+
+static_configs: 
+    - targets: ['localhost:9090', 'localhost:9100']
+
+save 
+
+sudo systemctl daemon-reload
+sudo service prometheus start
+sudo service prometheus status
+
+
+installation
+https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/#2-start-the-server
+
+Access the GUI. 
+
+Conffiure data source to Prometheus. 
+
+Import Node_Exporter dashboard. 
+
+
+
+
+
+
+
+

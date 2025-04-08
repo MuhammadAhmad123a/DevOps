@@ -1,0 +1,23 @@
+---
+host: phl-42
+datacenter:
+  location: Philadelphia
+  cab: "13"
+  cab_unit: '3'
+
+---
+host: phl-43
+datacenter:
+  location: Philadelphia      
+  cab: "13"
+  cab_unit: '4'
+...
+
+---
+host: hel-13
+datacenter:
+  location: Helsinka 
+  cab: "9"
+  cab_unit: "2"
+
+

@@ -1,0 +1,22 @@
+jobs:
+ - job: Job1
+   displayName: First Job
+   continueOnError: true
+   workspace:
+    clean: outputs
+   steps:
+   - script: echo step 1 
+     displayName: step 1
+   - script: echo step 2 
+     displayName: step 2
+
+ - job: Job2
+   displayName:  Second Job
+   continueOnError: true
+   workspace:
+     clean: outputs
+   steps:
+   - script: echo step 1 
+     displayName: step 1
+   - script: echo step 2 
+     displayName: step 2

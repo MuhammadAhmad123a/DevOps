@@ -1,0 +1,113 @@
+# Installing Prometheus on Ubuntu 
+
+Create an EC2 instance with 9090, 9100, 9093, 3000 port enabled. Also enable Smtp traffic
+
+wget https://github.com/prometheus/prometheus/releases/download/v2.46.0/prometheus-2.46.0.linux-amd64.tar.gz
+
+tar -xvf prometheus-2.46.0.linux-amd64.tar.gz
+
+cd prometheus-2.46.0.linux-amd64
+
+./prometheus
+
+ip:9090
+-----------------------
+
+
+# Running Prometheus in background
+sudo mkdir /usr/local/bin/prometheus 
+sudo cp -r /home/ubuntu/prometheus-2.46.0.linux-amd64 /usr/local/bin/prometheus
+
+sudo nano /etc/systemd/system/prometheus.service
+[Unit]
+Description=Prometheus Service 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/prometheus/prometheus-2.46.0.linux-amd64/prometheus --config.file=/usr/local/bin/prometheus/prometheus-2.46.0.linux-amd64/prometheus.yml
+
+[Install]
+WantedBy=multi.user.target
+
+Save the file 
+
+sudo service prometheus start
+sudo service prometheus status
+
+---------------------------------------
+# Prometheus GUI 
+http://ip:9090/metrics
+http://18.183.223.21:9090/service-discovery
+
+---------------------------------------
+
+# Node Exporter
+
+wget https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
+
+tar xzf node_exporter-1.6.1.linux-amd64.tar.gz
+
+sudo cp node_exporter-1.6.1.linux-amd64/node_exporter /usr/local/bin
+
+sudo nano /etc/systemd/system/node-exporter.service
+
+[Unit]
+Description=Prometheus Node Exporter Service 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi.user.target
+
+Save the file
+
+sudo systemctl daemon-reload
+sudo service node-exporter start
+sudo service node-exporter status
+
+ip:9100
+
+-------------------------------------------
+
+# Adding target in Prometheus.yml
+sudo nano /usr/local/bin/prometheus/prometheus-2.46.0.linux-amd64//prometheus.yml
+
+add the following lines at the end 
+
+  - job_name: "node_exporter"
+
+    static_configs:
+      - targets: ["localhost:9100"]
+
+save the file
+sudo service prometheus restart
+sudo service prometheus status
+
+browse ip:9090 
+check for another target named node_exporter
+also browse new metrics for node 
+
+-----------------------------------------------
+
+# Running Queries browse for 
+prometheus_http_requests_total 
+execute it and check output. 
+
+# You can implement filters as well
+prometheus_http_requests_total{code="400"}
+
+# You can use Regular Expression as well
+{handler=~"/api.*"}
+
+# Rate Functions
+prometheus_http_request_duration_seconds_count{job="prometheus"}
+execute it and check the graphs
+
+now apply rate function with this metric
+rate(prometheus_http_request_duration_seconds_count{job="prometheus"}[5m])
+
+

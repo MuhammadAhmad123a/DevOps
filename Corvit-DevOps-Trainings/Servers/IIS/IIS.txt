@@ -1,0 +1,11 @@
+Create EC2 instance with Windows Server 2022 base or any other Windows Server Image
+Allow RDP, Http and Https traffic. 
+
+Click on Add Features and Roles
+leave the Default options as they are click on next
+On Select Server Roles Screen Check Web Server IIS Option and move forward with wizard. 
+Complete the wizard and click on Install. 
+Once the Server is installed go to C:\inetpub\wwwroot. 
+Remove the previous files from the wwwroot directory. 
+Make a index.html file
+Browse the site from the EC2 Public IP

@@ -1,0 +1,21 @@
+# Flow mapping dictionary
+ mysqldatabase": {hostname: localhost,port: 3012,username:root,   password: root}
+
+---
+# Block mapping Dictionary
+mysqldatabase:
+    hostname: localhost
+    port: 3012
+    username: root
+    password: root
+
+# Specifying Dictionary
+people: !!omap
+ - person1:
+      name: will smith
+      age: 42
+      height: 678
+ - person2: 
+      name: chris rock
+      age: 50
+      height: 456 

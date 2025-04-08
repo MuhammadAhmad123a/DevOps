@@ -1,0 +1,92 @@
+Create EC2 instance with 20.04 ubuntu image
+Allow port 8080 plus http traffic
+
+We are going to configure tomcat 10.1.10
+
+https://www.hostinger.com/tutorials/how-to-install-tomcat-on-ubuntu/
+https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-10-on-ubuntu-20-04
+
+$ sudo apt update
+$ sudo apt install default-jdk OR sudo apt install openjdk-11-jdk
+$ java -version
+$ sudo groupadd tomcat
+$ sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+$ cd /tmp
+$ wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.28/bin/apache-tomcat-10.1.28.tar.gz
+$ sudo mkdir /opt/tomcat
+$ sudo tar xzvf apache-tomcat-10*tar.gz -C /opt/tomcat --strip-components=1
+$ sudo chown -R tomcat:tomcat /opt/tomcat/
+$ sudo chmod -R u+x /opt/tomcat/bin
+
+$ sudo nano /opt/tomcat/conf/tomcat-users.xml
+paste the following in the file and save
+<role rolename="manager-gui" />
+<user username="manager" password="manager_password" roles="manager-gui" />
+
+<role rolename="admin-gui" />
+<user username="admin" password="admin_password" roles="manager-gui,admin-gui" />
+
+$ sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
+Comment the valve section as shown below and save.
+...
+<Context antiResourceLocking="false" privileged="true" >
+  <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"
+                   sameSiteCookies="strict" />
+<!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.Csr>
+</Context>
+
+$ sudo nano /opt/tomcat/webapps/host-manager/META-INF/context.xml
+Comment the Valve section in this file as well and save
+
+$ sudo update-java-alternatives -l
+
+$ sudo nano /etc/systemd/system/tomcat.service
+paste the following and save the file
+[Unit]
+Description=Tomcat
+After=network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+
+Environment="JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
+Environment="CATALINA_BASE=/opt/tomcat"
+Environment="CATALINA_HOME=/opt/tomcat"
+Environment="CATALINA_PID=/opt/tomcat/temp/tomcat.pid"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+$ sudo systemctl daemon-reload
+$ sudo systemctl start tomcat
+$ sudo systemctl status tomcat
+$ sudo systemctl enable tomcat
+$ sudo ufw allow 8080
+http://your_server_ip:8080
+
+Hosting your own site on tomcat server
+$ cd /opt/tomcat/webapps
+$ mkdir mywebsite
+$ sudo chown -R ubuntu:ubuntu /opt/tomcat
+$ sudo chmod -R 755 /opt/tomcat
+$ cd/opt/tomcat/bin
+$ ./shutdown.sh
+$ ./startup.sh
+http://your_server_ip:8080/mywebsite/index.html
+
+
+https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.28/src/apache-tomcat-10.1.28-src.tar.gz
+

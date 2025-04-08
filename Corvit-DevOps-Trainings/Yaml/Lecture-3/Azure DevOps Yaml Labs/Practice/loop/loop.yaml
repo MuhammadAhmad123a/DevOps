@@ -1,0 +1,18 @@
+parameters:
+- name: loop_values
+  type: object 
+  default: []
+
+jobs:
+ - job: Job
+   displayName: Job
+   continueOnError: true
+   workspace:
+    clean: outputs
+   steps:
+   - ${{ each value in parameters.loop_values }}:
+       - script: echo ${{ value }}
+         displayName: step 1
+
+   - script: echo step 2 
+     displayName: step 2

@@ -1,0 +1,19 @@
+
+# An employee record
+name: Ahmad
+job: Developer
+skill: Elite
+employed: True
+foods: 
+ - Apple
+ - 2.2
+ - Strawberry
+ - 1
+languages:
+  perl: Elite
+  python: Elite
+  pascal: Lame
+education: |
+ Inter
+ Bachelors in Computer Sciences
+ Master in Computer Sciences

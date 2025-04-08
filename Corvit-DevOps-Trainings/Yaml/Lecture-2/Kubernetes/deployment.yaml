@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: myapp
+  label: 
+    app:web
+spec: 
+  replicas: 2 
+  selector: 
+    matchlabels: 
+     app:web
+  template: 
+    metadata:
+      name: myapp
+      labels:
+        app:web
+    spec:
+      containers:
+       - name: myapp
+         image: nginx:latest
+         imagePullPolicy: IfNotPresent
+         ports: 
+         - containerPort: 80

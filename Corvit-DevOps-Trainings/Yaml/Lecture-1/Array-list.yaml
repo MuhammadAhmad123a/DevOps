@@ -1,0 +1,91 @@
+# Arrays with key
+key1:
+  - value1
+  - value2
+  - value3
+  - value4
+  - value5
+
+key2: [value1,value2,value3,value4,value5]
+
+key3: [value1,value2
+  value3,value4,value5]
+
+---
+# Array without key 
+ [one, two, three, four]
+--- 
+- one
+- two
+- three
+- four
+
+---
+# Specify sequence datatype
+student: !!seq 
+ - name
+ - marks
+ - roll_no
+ 
+---
+# Array of Arrays 
+employees:
+    - 
+        id: 213
+        name: franc
+        others:
+            - { department: sales, did: 1} 
+            - { salary: 5000}
+            - { address: USA, pincode: 97845 }
+
+---
+# Array of Objects
+one:
+  - id: 1
+    name: franc
+  - id: 11
+    name: Tom
+
+---
+# Array of Strings with Key 
+numbers: [
+  one,
+  two,
+  three,
+  four
+]
+
+---
+# Array of Strings without key
+[
+  one,
+  two,
+  three,
+  four
+]
+
+---
+# Array of numbers 
+#integer
+numbers: [
+  1,
+  2,
+  3,
+  4
+]
+
+# float
+floatvalues: [
+  1.3,
+  2.2,
+  3,
+  4
+]
+
+# Sparse Sequence
+Sparse sequence: 
+ - hey
+ - how
+ - 
+ - Null
+ - exp

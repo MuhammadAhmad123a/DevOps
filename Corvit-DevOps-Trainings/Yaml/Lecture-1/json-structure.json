@@ -1,0 +1,19 @@
+{ 
+    "name": "Ahmad",
+    "job": "Developer",
+    "skill": "Elite",
+    "employed": true,
+    "foods": [
+        "Apple",
+        "Orange",
+        "Strawberry",
+        "Mango"
+    ],
+    "languages": {
+        "perl": "Elite",
+        "python": "Elite",
+        "pascal": "Lame"
+    },
+    "education": "Inter\n Bachelors in Computer Sciences\n Master in Computer Sciences" 
+   
+}

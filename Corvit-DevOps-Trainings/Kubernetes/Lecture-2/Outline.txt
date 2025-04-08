@@ -1,0 +1,6 @@
+Kubernetes Fundamentals
+Imperative and Declarative Aprroaches
+Pod
+Replica Set 
+Deployment
+Service 
