@@ -1,0 +1,18 @@
+AWS CodeBuild Official Site: https://aws.amazon.com/codebuild/
+Buildspec.yml specifications: https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+Use case based examples: https://docs.aws.amazon.com/codebuild/latest/userguide/use-case-based-samples.html
+
+
+Push build folder and buildspec.yml file to CodeCommit repo. 
+
+Create a S3 bucket and allow Public Access plus also enable Static Web Hosting with index.html file as starting file. 
+
+Search Code Build and create a Project. 
+Select CodeCommit as source and select the Repo and branch. 
+Select Managed Image with Latest Standard version
+Create a new service role. 
+Left other options as default. 
+
+Give S3 Full Access permission to the service role which you created in previous step. 
+
+Now Start build and if build completes successfully index.html would be placed at S3 bucket. Browse and check the site

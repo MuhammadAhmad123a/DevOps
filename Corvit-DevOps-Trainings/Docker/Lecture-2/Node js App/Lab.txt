@@ -1,0 +1,8 @@
+Create package.json
+Create Server.js
+Create Dockerfile
+
+docker build -t mfaran6301/node-web-app . 
+docker images
+docker run -p 49160:8080 -d mfaran6301/node-web-app
+Browse localhost:49160

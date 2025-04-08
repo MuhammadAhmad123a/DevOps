@@ -1,0 +1,18 @@
+After Installing Ansible on control node create two more EC2 instances. Create these instances with the same key used for control server
+
+Move key file pem extension to /home/ubuntu/.ssh/. Use WinScp or any other tool for this. 
+
+Provide permission to the key file
+chmod 600 ~/.ssh/ansible-pem.pem
+
+Now Configure the Host file (Inventry file). Host file can be of ini , yaml or json. 
+
+hosts file contains the info for the host. This file can be found /etc/ansible/hosts
+
+$ sudo nano hosts
+configure hosts info in the file and save
+[webservers]
+43.207.67.199 ansible_ssh_private_key_file=/home/ubuntu/.ssh/ansible-pem.pem
+175.41.221.16 ansible_ssh_private_key_file=/home/ubuntu/.ssh/ansible-pem.pem
+
+$ ansible -i /etc/ansible/hosts all -m ping

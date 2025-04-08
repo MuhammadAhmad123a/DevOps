@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: "{{ .Values.name }}"
+spec:
+  type: "{{ .Values.type }}" # ClusterIp, # NodePort
+  selector:
+    app: "{{ .Values.app }}"
+  ports: 
+    - name: http
+      port: 8080 # Service Port
+      targetPort: 8080 # Container Port

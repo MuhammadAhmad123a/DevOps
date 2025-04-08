@@ -1,0 +1,24 @@
+In apache-role.yml we have defined the hosts: webservers and called the two roles – install-apache and start-apache.
+create apache-role.yml in /etc/ansible/. 
+$ sudo nano apache-role.yml  Place the following code 
+--- 
+- hosts: webservers 
+- roles: 
+   - {role: install-apache} 
+   - {role: start-apache} 
+
+Create Roles
+
+/etc/ansible/roles$ sudo ansible-galaxy init install-apache
+/etc/ansible/roles$ sudo ansible-galaxy init start-apache
+
+There is a tasks directory under each role directory and it contains a main.yml.
+Configure main.yml of install-apache + start-apache
+
+/etc/ansible/roles/install-apache/tasks$ sudo nano main.yml
+/etc/ansible/roles/start-apache/tasks$ sudo nano main.yml
+
+/etc/ansible$ ansible-playbook apache-role.yml
+
+Note : The advantage of breaking the playbook into roles is that anyone who wants to use the Install apache feature can call the Install apache role
+

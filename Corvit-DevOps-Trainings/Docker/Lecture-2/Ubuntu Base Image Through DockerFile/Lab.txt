@@ -1,0 +1,9 @@
+Create Dockerfile
+Create testfile1
+Create testfile2 
+
+docker build -t newimage .
+docker images
+docker run -it --name ubuntucont newimage /bin/bash
+ls
+echo $myname

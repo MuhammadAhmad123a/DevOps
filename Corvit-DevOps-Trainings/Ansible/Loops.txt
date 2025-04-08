@@ -1,0 +1,27 @@
+Attaching the example output just to make one understand how we used the stdout_lines in the with_items command.
+
+--- 
+#Tsting 
+- hosts: tomcat-node 
+   tasks: 
+      - name: Install Apache 
+      shell: "ls *.war" 
+      register: output 
+      args: 
+         chdir: /opt/ansible/tomcat/demo/webapps 
+      
+      - file: 
+         src: '/opt/ansible/tomcat/demo/webapps/{{ item }}' 
+         dest: '/users/demo/vivek/{{ item }}' 
+         state: link 
+      with_items: "{{output.stdout_lines}}"
+
+Blocks
+
+The playbook in totality is broken into blocks. The smallest piece of steps to execute is written in block. 
+Writing the specific instruction in blocks helps to segregate functionality and handle it with exception handling if needed.
+
+Example of blocks is covered in variable usage,exception handling and loops above.
+
+
+

@@ -1,0 +1,17 @@
+Create Azure Container Registry
+Create Azure Container Instance 
+az login
+az account set --subscription <subscripton-id>
+az acr login --name <registry name>
+
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+docker run --name myapp -p 8080:80 -d mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+http://localhost:8080
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine <registry name>.azurecr.io/samples/nginx
+docker push <registry name>.azurecr.io/samples/nginx
+
+Go to ACR and in Access key tab enable Admin User
+Create Azure Container Instance and select pushed image from ACR and Browse FQDN
+
+
+

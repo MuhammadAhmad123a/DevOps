@@ -1,0 +1,23 @@
+Create package.json
+Create package-lock.json
+Create app.js
+Create Dockerfile
+
+docker build . -t hello-app:v1.0.0
+docker images
+create ECR private repository name "hello-app" 
+in ECR click on View push commands and run them to push your image to ECR (no need to run docker build command cz we already had build it)
+Provide AmazonEC2ContainerRegistryFullAccess policy to your user
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 769126752719.dkr.ecr.us-west-2.amazonaws.com
+docker tag hello-app:v1.0.0 769126752719.dkr.ecr.ap-northeast-1.amazonaws.com/hello-app:v1.0.0 (i have given tag v1.0.0 you can go with latest if you want)
+docker push 769126752719.dkr.ecr.ap-northeast-1.amazonaws.com/hello-app:v1.0.0
+
+create lambda function name "hello-app" with Container Image option selected
+browse the image and select the image which you had pushed and click on create function
+Add trigger and select API Gateway
+Create HTTP API with secturity otion "Open"
+After trigger is created scroll down and copy the Endpoint URL 
+In order to test you can curl the endpoint url 
+Use bash shell
+curl -k  -XPOST -d '{"name": "Faran"}' https://1xqwvjjsek.execute-api.ap-northeast-1.amazonaws.com/default/hello-app
+

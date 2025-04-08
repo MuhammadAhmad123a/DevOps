@@ -1,0 +1,6 @@
+Create Dockerfile
+
+docker build -t myapacheserver .
+docker images
+docker run –d –p 80:80 myapacheserver
+browse localhost

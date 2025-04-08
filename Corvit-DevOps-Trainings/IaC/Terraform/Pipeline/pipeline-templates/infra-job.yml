@@ -1,0 +1,50 @@
+parameters:
+- name: UpdateDBstr
+  default: 'true'
+  type: boolean
+
+steps:
+  - checkout: self
+  - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+    displayName: 'Install Terraform'
+    inputs:
+      terraformVersion: 'latest'
+  - task: AzureCLI@2
+    displayName: 'Execute bicep file'
+    inputs:
+      azureSubscription: $(azureSubscription)
+      scriptType: 'pscore'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az --version
+        az group create --name $(resourceGroupName) --location $(location)
+        az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters storageAccountName=$(storageAccount) storageContainerName=$(Container)
+        
+  - task: TerraformTaskV2@2
+    displayName: 'Initialize Terraform'
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/templates'
+      backendServiceArm: $(azureSubscription)
+      backendAzureRmResourceGroupName: $(resourceGroupName)
+      backendAzureRmStorageAccountName: $(storageAccount)
+      backendAzureRmContainerName: $(Container)
+      backendAzureRmKey: $(stateFile)
+  - task: TerraformTaskV2@2
+    displayName: 'Plan Terraform'
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/templates'
+      commandOptions: '-var-file=$(tfvarFile) -out=plan.file'
+      environmentServiceNameAzureRM: $(azureSubscription)
+  - task: TerraformTaskV2@2
+    displayName: 'Apply Terraform'      
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'  
+      workingDirectory: '$(System.DefaultWorkingDirectory)/templates'
+      environmentServiceNameAzureRM: '$(azureSubscription)'
+      commandOptions: plan.file
+ 

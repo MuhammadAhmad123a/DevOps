@@ -1,0 +1,15 @@
+---
+- name: Install Tomcat artifacts
+  apt:
+    name: tomcat10
+    state: present
+  register: output
+
+- set_fact:
+    tomcat_installation_path: /path/to/tomcat
+
+- name: Debug output
+  debug:
+    msg:
+      - "Install Tomcat artifacts task ended with message: {{ output }}"
+      - "Installed Tomcat artifacts - {{ output.changed }}"

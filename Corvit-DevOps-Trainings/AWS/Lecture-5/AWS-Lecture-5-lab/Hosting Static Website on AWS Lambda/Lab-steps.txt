@@ -1,0 +1,69 @@
+1- Download Code
+
+myLambdaWebsite.zip conatins the static website. 
+This website consists of the following website components:
+    2 HTML files (one representing the index page and the other one the contact page)
+    1 CSS file (providing formatting and styling - sample fonts and colors)
+    1 JavaScript file (providing sample animation - snowing effect)
+    1 PNG image (sample company logo)
+    1 PDF file (representing sample binary file for download - pricelist)
+
+
+2- Configs at AWS Lambda
+
+Create function
+
+As "Function name" enter: myLambdaWebsite, as "Runtime" make sure the following is selected: Node.js 12.x
+
+Within the "Function code" box click on the "Actions drop-down menu" and choose: "Upload a .zip file"
+
+Click on the "Upload" button and choose the myLambdaWebsite.zip file from the location where you stored it
+
+
+3- Configs at AWS API Gateway
+
+Create API" located at the top right part of the screen
+
+Within the "REST API" box click on the orange button "Build" 
+
+As "API name" enter: My Lambda Website
+
+Click on the blue button "Create API" 
+
+From the left sidebar under the "API: My Lambda Website" choose "Settings" (note: there are 2 "Settings" in the left sidebar, choose the indented one with the smaller font)
+
+Scroll to the bottom of the screen
+
+Under the "Binary Media Types" heading click on the "+ Add Binary Media Type" and into the input field enter: */*
+
+Scroll to the bottom of the screen and click on the blue button "Save Changes" 
+
+From the left sidebar under the "API: My Lambda Website" choose "Resources"
+
+From the "Actions drop-down" choose: Create Method
+
+Choose "ANY" from the drop-down and click on the grey tick icon
+
+Make sure the checkbox is checked for the option: "Use Lambda Proxy Integration"
+
+As "Lambda function" enter the name of your Lambda function: myLambdaWebsite
+
+Click on the blue button "Save" and then click on the blue button "OK" 
+
+From the "Actions drop-down" choose: "Create Resource"
+
+Make sure the checkbox is checked for the option: "Configure as proxy resource" 
+
+Click on the blue button "Create Resource" 
+
+As "Lambda function" enter the name of your Lambda function: myLambdaWebsite
+
+Click on the blue button "Save" and then click on the blue button "OK" 
+
+From the "Actions drop-down" choose: Deploy API
+
+As "Deployment stage" choose: [New Stage], as "Stage name" enter: web
+
+Click on the blue button "Deploy" 
+
+Copy the "Invoke URL" into the clipboard and browse it 

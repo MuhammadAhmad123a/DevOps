@@ -1,0 +1,21 @@
+In this lab we are creating two pipelines. 
+
+1st one to Build image from Docker file and then Push it to Azure Container Registry. 
+2nd one would contain the Azure CLI task which we added to Deploy stage in our previous lab. This pipeline would pull image for Azure Container Registry and deploy it to Azure Container Instance. 
+
+For this lab you can you previous files but remove Deploy stage from your azure-pipelines.yaml and save it. Create a new pipline from this updated file
+
+Then go to Release Pipeline and create new pipeline. You had to select a template so select any template. 
+Now go to tasks and remove any task created before. (We are doing this because we only need Azure CLI task and this task can't be full template so we created a template and now we removing its tasks as we just need to run Azure CLI task).
+Add Azure CLI task and configure it. Add service principal. And in Location option select Inline Script and paste the script which we used in previous lab. 
+Remember to change $(tag) to $(Build.BuildId) while specifying image in the script and then paste it. 
+save the task and pipeline. 
+
+Now add artifact to this pipeline. 
+Select the 1st pipeline which we used to Build and Push image to ACR. 
+Configure all options and save it. 
+Remember all build and push process is done by 1st pipeline and when 1st pipeline is successfull then run 2nd pipeline which would get artifact from 1st pipeline and would deploy image to Container insatnce. 
+
+Make change to index.html
+Run 1st pipeline and after its successfull completion run the 2nd pipeline. 
+Browse FQDN. you can see the changes.  

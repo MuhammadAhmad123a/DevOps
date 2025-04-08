@@ -1,0 +1,20 @@
+1- Difference between SQL and No SQL
+Ans: https://www.talend.com/resources/sql-vs-nosql/
+
+2- What is the alternate of table in No SQL database? 
+Ans: Collections (https://www.mongodb.com/docs/compass/current/collections/)
+
+3- Agile vs DevOps. 
+Ans: https://www.techtarget.com/searchsoftwarequality/opinion/DevOps-vs-waterfall-Can-they-coexist
+
+4- Monolithic vs Microservices 
+Ans: https://www.atlassian.com/microservices/microservices-architecture/microservices-vs-monolith 
+
+5- Why Mongo is better for Microservices Architechture? 
+Ans: https://thenewstack.io/microservices-and-nosql-a-great-match/ 
+
+6- What are the three important DevOps KPIs?
+Ans: https://www.atlassian.com/devops/frameworks/devops-metrics
+
+7- What is Multitenant Architecture? 
+Ans: https://www.cloudflare.com/learning/cloud/what-is-multitenancy/

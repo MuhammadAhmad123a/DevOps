@@ -1,0 +1,16 @@
+# Deployments
+
+name: app1
+app: app1
+containername: app1-container
+image: 
+  imagerepo: stacksimplify
+  imagename: kubenginx
+  imagetag:  2.0.0
+containerport: 80
+
+# Cluster IP
+
+type: LoadBalancer
+serviceport: 80
+

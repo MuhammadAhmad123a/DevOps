@@ -1,0 +1,5 @@
+Create tomcat-ansible.yml at Control-node (/etc/ansible/)
+
+$ ansible-playbook tomcat-ansible.yml
+
+$ sudo systemctl status tomcat

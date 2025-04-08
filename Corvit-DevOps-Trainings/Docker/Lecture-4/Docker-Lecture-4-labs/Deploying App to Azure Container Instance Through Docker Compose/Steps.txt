@@ -1,0 +1,9 @@
+Download code
+Configure the docker-compose file
+
+docker login azure
+docker context create aci myacicontext (select the resource group)
+docker context ls
+docker context use myacicontext
+docker compose up
+browse ip address of the Azure Container Instance 

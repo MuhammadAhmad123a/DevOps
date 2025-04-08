@@ -1,0 +1,16 @@
+Conditionals are used where one needs to run a specific step based on a condition.
+
+--- 
+#Tsting 
+- hosts: all 
+   vars: 
+      test1: "Hello" 
+   tasks: 
+      - name: Testing Ansible variable 
+      debug: 
+         msg: "Equals" 
+         when: test1 == "Hello"
+
+
+In this case, Equals will be printed as the test1 variable is equal as mentioned in the when condition. 
+when can be used with a logical OR and logical AND condition as in all the programming languages.

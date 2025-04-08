@@ -1,0 +1,94 @@
+1- Git stash drop ?
+Ans: Drop the Most Recent Stash.
+     The Git stash drop command is used to remove a particular stash. 
+     If there’s a stash you're no longer using or you want to remove a specific item of stash from the list, you can use the stash commands.
+     Let’s say you want to delete an item named stash@{abc}; you can use the command:
+     git stash drop stash@{abc}.
+
+2- Git pull vs fetch ?
+Ans:Git Fetch is the command that tells the local repository that there are changes available in the remote repository without bringing the changes into the local repository. 
+    Git Pull on the other hand brings the copy of the remote directory changes into the local repository.
+    https://www.geeksforgeeks.org/git-difference-between-git-fetch-and-git-pull/
+
+3- What do you understand by the term ‘Version Control System’?
+Ans: A version control system (VCS) records all the changes made to a file or set of data, so a specific version may be called later if needed.
+     This helps ensure that all team members are working on the latest version of the file
+
+4- What benefits come with using GIT?
+Ans:Data replication and redundancy are both possible.
+    It is a service with high availability.
+    There can only be one Git directory per repository.
+    Excellent network and disc performance are achieved.
+    On any project, collaboration is very simple.
+
+5- What language is used in Git?
+Ans: C. Using C language reduces the overhead of run times, which are common in high-level languages.
+
+6- How is Git different from Subversion (SVN)?
+Ans: https://www.perforce.com/blog/vcs/git-vs-svn-what-difference
+
+7- Which command is used to create an empty Git repository?
+Ans: git init - This command helps to create an empty repository while working on a project.
+
+8- What does git pull origin master do?
+Ans: The git pull origin master fetches all the changes from the master branch onto the origin and integrates them into the local branch.
+
+9- How do you resolve conflicts in Git?
+Ans:Identify the files responsible for the conflicts.
+    Implement the desired changes to the files 
+    Add the files using the git add command.
+    The last step is to commit the changes in the file with the help of the git commit command.
+
+10- What is the process to revert a commit that has already been pushed and made public?
+Ans: There are two processes through which you can revert a commit:
+     1. Remove or fix the bad file in a new commit and push it to the remote repository. Then commit it to the remote repository using:
+     git commit –m “commit message”
+     2. Create a new commit to undo all the changes that were made in the bad commit. Use the following command:
+     git revert <commit id>
+
+11- How do you find a list of files that has been changed in a particular commit?
+Ans: The command to get a list of files that has been changed in a particular commit is:
+     git diff-tree –r {commit hash}
+     -r flag allows the command to list individual files
+     commit hash lists all the files that were changed or added in the commit.
+
+12- What is SubGit and why is it used?
+Ans: SubGit is a tool that is used to migrate SVN to Git. 
+     It transforms the SVN repositories to Git and allows you to work on both systems concurrently. It auto-syncs the SVN with Git.
+
+13- If you recover a deleted branch, what work is restored?
+Ans: The files that were stashed and saved in the stashed index can be recovered. The files that were untracked will be lost. 
+     Hence, it's always a good idea to stage and commit your work or stash them. 
+
+14- Explain these commands one by one– git status, git log, git diff, git revert <commit>,  git reset <file>.
+Ans: 
+    Git status - It shows the current status of the working directory and the staging area.
+    Git revert<commit> -  It is used for undoing changes to a repository's commit history.
+    Git log- It is a key tool for reviewing and reading the history of everything that happens to a repository.
+    Git diff- It is a multi-purpose Git command that performs a diff function on Git data sources when executed.
+    Git reset<file>- it is used to unstage a file.
+
+15- What do you mean by branching strategy?
+Ans: t is employed by a software development team while writing and managing code with a version control system.
+
+16- What exactly is the forking workflow?
+Ans: Forking is a git clone operation that is performed on a server copy of a project's repository.
+
+17- State the difference between “git remote” and “got clone”?
+Ans: “Git remote” allows you to create an entry in the git configuration which specify a URL.
+     “Git clone” lets you create a new git repository by letting you copy it from the  current URL.
+
+18- How might you recover a branch that has previously pushed changes in the main repository yet has been coincidentally erased from each team member's local machines?
+Ans: We can easily recover this by seeing the latest commit of the branch in the reflog and then going through the new branch. 
+
+19- What about Git reflog?
+Ans: Git reflog is a history of all the changes made to a git repository. It is a valuable tool for debugging and troubleshooting purposes. 
+
+20- What is a detached head and how to avoid a detached head?
+Ans:A detached HEAD is a state where the HEAD pointer is not pointing to the current commit. 
+    This can happen if you check out a commit that is not the most recent, or if you reset your head to a previous commit. 
+    There are a few different ways to avoid a detached HEAD. 
+    The first is to simply commit your changes before switching branches. 
+    This will ensure that your changes are saved to a specific branch, and you won't have to worry about them being lost when you switch branches.
+    Another way to avoid detached HEAD is to use the "git checkout" command with the "-b" option.
+

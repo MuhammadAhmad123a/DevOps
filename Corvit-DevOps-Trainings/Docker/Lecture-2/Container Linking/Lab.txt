@@ -1,0 +1,11 @@
+Download the Jenkins image, if it is not already present, using the Jenkins pull command
+docker pull jenkins/jenkins
+
+Once the image is available, run the container, but this time, you can specify a name to the container by using the –-name option. This will be our source container.
+docker run --name=jenkingscontainer -d jenkins/jenkins
+
+Next, it is time to launch the destination container, but this time, we will link it with our source container. For our destination container, we will use the standard Ubuntu image.
+docker run --name=ubuntucontainer --link=jenkingscontainer:alias-src -it ubuntu:latest /bin/bash 
+
+Then run the env command. You will notice new variables for linking with the source container.
+env

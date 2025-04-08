@@ -1,0 +1,22 @@
+Create Personal Access Token at your github account. 
+Create a repository named jenkings-lab-repo and add a index.html file in it. 
+Clone this repo to your local machine. 
+
+Go to jenkings console. 
+Click on Manage Jenkins
+Click on System in System Configuration section. 
+Look for GitHub Server option, Add Github Server. Give name then add credentials. Choose Secret as method and add your PAT and test connection
+Remember to check Manage Hooks checkbox and save the configuration
+
+Now come to your project and click on configure. 
+Remove the parameters which we added in previous lab. 
+In SCM section choose git provide url of your repository plus branch from which you want to trigger the build
+In Build Triggers section check "GitHub hook trigger for GITScm polling".
+ 
+In build steps section choose Execution shell and paste the following: 
+cat index.html
+
+Save the configs. 
+
+Now navigate to the repository which you cloned at the start. made any change in index.html file and push it to the remote repo. 
+you'll see build would be trigerred automatically. 

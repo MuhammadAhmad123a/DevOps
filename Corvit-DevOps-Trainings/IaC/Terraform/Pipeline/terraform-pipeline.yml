@@ -1,0 +1,41 @@
+parameters:
+- name: check
+  displayName: Which action to perform?
+  type: string
+  default: DEV
+  values:
+  - DEV
+  - QA
+
+stages:
+- ${{ if eq( parameters['check'], 'DEV') }}:
+  - stage: DEV
+    variables:
+    - group: Dev-terraform-variables
+    - group: Common-terraform-variables
+    jobs:    
+      - job: Dev
+        timeoutInMinutes: "420"
+        displayName: DEV Deployment
+        pool:
+          name: Azure Pipelines
+          vmImage: 'ubuntu-latest'      
+        steps:
+          - template: pipeline-templates\infra-job.yml
+
+- ${{ if eq( parameters['check'], 'QA') }}:
+  - stage: QA
+    dependsOn: []
+    variables:
+    - group: Qa-terraform-variables
+    - group: Common-terraform-variables  
+    jobs:    
+      - job: QA
+        timeoutInMinutes: "420"
+        displayName: QA Deployment
+        pool:
+          name: Azure Pipelines
+          vmImage: 'ubuntu-latest'      
+        steps:
+          - template: pipeline-templates\infra-job.yml         
+

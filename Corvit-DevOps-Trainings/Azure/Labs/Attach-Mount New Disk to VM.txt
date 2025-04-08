@@ -1,0 +1,56 @@
+Attach/Mount New Disk to the VM
+
+1.	Go to the Azure portal to find the VM. Search for and select Virtual machines.
+
+2.	Choose the VM from the list.
+
+3.	In the Virtual machines page, under Settings, choose Disks.
+
+4.	On the Disks pane, under Data disks, select Create and attach a new disk.
+
+5.	Enter a name for your managed disk. Review the default settings, and update the Storage type, Size (GiB), Encryption and Host caching as necessary. 
+
+6.	When you are done, select Save at the top of the page to create the managed disk and update the VM configuration.
+
+7.	Connect to the VM to mount the new disk.
+
+8.	Once connected to your VM, you need to find the disk. In this example, we are using lsblk to list the disks.
+        lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
+        In this example, the disk that I added is sdc. It is a LUN 0 and is 10GB.
+
+9.	Partition the New Disk
+        sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+        sudo mkfs.xfs /dev/sdc1
+        sudo partprobe /dev/sdc1
+
+10.	Mount the Disk
+        Create a directory to mount the file system using mkdir. 
+        The following example creates a directory at /datadrive:
+        sudo mkdir /datadrive
+
+11.     Use mount to then mount the filesystem. 
+        The following example mounts the /dev/sdc1 partition to the /datadrive mount point:
+        sudo mount /dev/sdc1 /datadrive
+        df
+
+12.     To ensure that the drive is remounted automatically after a reboot, it must be added to the /etc/fstab file. 
+        It is also highly recommended that the UUID (Universally Unique Identifier) is used in /etc/fstab to refer to the drive rather than just the device name (such as, /dev/sdc1). 
+        If the OS detects a disk error during boot, using the UUID avoids the incorrect disk being mounted to a given location.
+        Remaining data disks would then be assigned those same device IDs. 
+        To find the UUID of the new drive, use the blkid utility:
+        sudo blkid 
+
+13.     Next, open the /etc/fstab file in a text editor as follows:
+        sudo nano /etc/fstab
+        
+        In this example, use the UUID value for the /dev/sdc1 device that was created in the previous steps, and the mountpoint of /datadrive. 
+        Add the following line to the end of the /etc/fstab file:
+
+        UUID=40ea8f38-ab53-4d60-b220-c76365c19766   /datadrive   xfs   defaults,nofail   1   2
+
+        We used the nano editor, so when you are done editing the file, use Ctrl+O to write the file and Ctrl+X to exit the editor.
+
+14.     Verify the Disk
+        You can now use lsblk again to see the disk and the mountpoint. 
+        lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
+        You can see that sdc is now mounted at /datadrive.

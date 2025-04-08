@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_qatest_vm_name": {
+            "value": null
+        },
+        "virtualNetworks_qatest_vnet_name": {
+            "value": null
+        },
+        "networkInterfaces_example_nic_name": {
+            "value": null
+        }
+    }
+}

@@ -1,0 +1,20 @@
+Create a EC2 instance with Ubuntu Image on AWS
+Create ssh key pair with pem extension and then convert it to ppk format using puttykeygen (key name: ansible-key)
+SSh into the instacne using Putty
+
+Installation through Apt on Ubuntu Machine
+For installing Ansible you have to configure PPA on your machine.
+(A personal package archive (PPA) is a repository that hosts software packages built and maintained by individuals or groups and made available for others. 
+PPAs are a convenient way to access the latest software versions that are not yet available in the official repositories of the operating system.)
+
+
+For this, you have to run the following line of code −
+$ sudo apt-get update 
+$ sudo apt-get install software-properties-common 
+$ sudo apt-add-repository ppa:ansible/ansible 
+$ sudo apt-get update 
+$ sudo apt-get install ansible
+$ ansible --version
+
+After running the above line of code, you are ready to manage remote machines through Ansible. 
+Just run ansible --version Ansible–version to check the version and just to check whether Ansible was installed properly or not.

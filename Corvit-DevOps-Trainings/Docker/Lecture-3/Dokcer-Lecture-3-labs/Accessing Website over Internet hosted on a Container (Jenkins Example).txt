@@ -1,0 +1,14 @@
+Create EC2 instance with ubuntu OS
+allowing rdp and http https 
+create a Custom TCP rule with port 8080 as Jenkins uses this port
+
+Install docker 
+
+docker run -td --name jenkinsserver -p 8080:8080 jenkins/jenkins
+
+docker ps
+
+docker port jenkinsserver
+
+Access the Public IP of EC2 Instance on Web Browser with port.
+ip:8080 

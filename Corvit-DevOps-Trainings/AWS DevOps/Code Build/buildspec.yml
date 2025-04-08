@@ -1,0 +1,16 @@
+version: 0.2 
+phases: 
+  install: 
+    runtime-version:
+    commands: 
+      - echo Getting Started
+  pre_build:
+    commands: 
+      - aws --version
+  build: 
+    commands: 
+      - aws s3 sync build/ s3://faran-demo151-static-site-s3 --acl public-read
+      - echo Build finished, now moving to S3
+  post_build: 
+    command:  
+      - echo Build completed on 'date'

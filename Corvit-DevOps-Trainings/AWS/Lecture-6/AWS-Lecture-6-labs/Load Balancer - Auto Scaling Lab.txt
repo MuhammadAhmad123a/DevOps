@@ -1,0 +1,27 @@
+Create 2 EC2 instacnes with Windows Server 2022 Image
+Create these both in same security group but in different availability zone. 
+Connect to Instance and open Server Manager. 
+Click on Add Roles opton and complete the wizard. Tick IIS Web Server to install
+After the installation is complete Go to C drive and in inetpub folder remove previous files and add index.html on both machines with different content for index.html.
+Now create a load balancer. Go to EC2 instance and in left pane scroll down. 
+Select Application Load Balancer and select both availability zones in which you created the instances.
+use the same security group.
+Left all options as default. 
+Create Target group and add both machines. Also remember to register these targets as well
+Once Traget Group and Load Balancer is created go to Load Balancer and pick DNS and Browse it multiple times. You would see responses from both servers. 
+
+Go to EC2 Instance and from left pane scroll down and select Launch Configuration
+Select Windows Server 2022 Image with t2 micro
+Left all option as Default and create new key pair and download it 
+Use the same security group and availability zone
+Create the Configurations. 
+
+Now go to EC2 and select Auto Scaling Group. 
+select configuration which you just created. 
+select a same Availability Zone. 
+Select Load Balancer which you configured in this lab.  
+Use Targeted Policy and configure policy according to your need and create group. 
+
+You would see another EC2 instance would be created automatically. 
+To see more instance creating you need to Increase the traffic. For this create a.bat file every machine and run it multiple times. As the load would increase a new machine would be created. 
+You can a.bat file simple by creating a text doc and writing a.bat in it. Save it with a.bat name with file type selected all. 

@@ -1,0 +1,12 @@
+---
+- name: Start Tomcat
+  shell: "{{ tomcat_installation_path }}/bin/startup.sh"
+  register: output
+  args:
+    executable: /bin/bash
+
+- name: Debug output
+  debug:
+    msg:
+      - "Start Tomcat task ended with message: {{ output }}"
+      - "Tomcat started - {{ output.changed }}"

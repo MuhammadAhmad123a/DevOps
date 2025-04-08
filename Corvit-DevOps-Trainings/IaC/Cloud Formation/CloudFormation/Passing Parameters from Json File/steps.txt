@@ -1,0 +1,18 @@
+Create s3-bucket.yml
+Create param.json
+
+aws cloudformation deploy --template-file s3-bucket.yml --stack-name static-website-12345678 --parameter-overrides file://param.json
+
+
+Update the Stack using CLI
+
+deploy command update the stack as well. Please note that if you want to review the changeset before executing it you will have to pass a parameter –no-execute-changeset
+Once you have reviewed it and are happy with it. Run the deploy command again by removing –no-execute-changeset option. And as expected, this time the changes will execute and your stack is updated.
+Here is the command to pass –no-execute-changeset in case you need-
+
+aws cloudformation deploy --template-file s3-bucket.yml --stack-name static-website-12345678 --parameter-overrides file://param.json --no-execute-changeset
+
+
+Delete the Stack
+
+aws cloudformation delete-stack --stack-name static-website-12345678

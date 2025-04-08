@@ -1,0 +1,11 @@
+Create an EC2 instance
+
+Create SNS Topic with standard tier and provide your email
+Create Subscrption and attach the SNS Topic
+Confirmation Mail would be recieved, confirm it. 
+
+Go to CloudWatch and Create Event. 
+Create Event for AWS Service (EC2 Instacne) 
+Add SNS Topic as target. 
+
+Stop or Terminate the EC2 instance. email would be sent. 

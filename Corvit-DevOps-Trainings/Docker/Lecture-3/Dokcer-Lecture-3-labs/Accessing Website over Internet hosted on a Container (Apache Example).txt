@@ -1,0 +1,21 @@
+Create EC2 instance with ubuntu OS
+allowing rdp and http https ports 
+
+Install docker 
+
+Docker login
+
+sudo docker run -td --name webserver -p 80:80  ubuntu
+
+docker ps
+
+docker port webserver
+
+docker exec -it webserver /bin/bash
+  apt-get update
+  apt-get install apache2 -y 
+  cd /var/www/html
+  echo "my site content" > index.html
+  service apache2 start 
+
+Access the Public IP of EC2 Instance on Web Browser. 

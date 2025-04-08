@@ -1,0 +1,8 @@
+---
+- name: Playbook for Configuring Tomcat
+  hosts: webservers
+  become: true
+
+  roles:
+    - install-tomcat
+    - start-tomcat

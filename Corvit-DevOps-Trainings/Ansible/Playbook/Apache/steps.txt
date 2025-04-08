@@ -1,0 +1,10 @@
+Note: Allow Http and Https traffic first in security group before this lab
+
+Create apache-ansible and index.html at control-node (/etc/ansible)
+
+/etc/ansible$ ansible-playbook apache-ansible.yml
+
+$ systemctl status apache2
+
+browse app using EC2 instance IP
+

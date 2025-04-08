@@ -1,0 +1,26 @@
+Microsoft Account
+Azure Active Directory
+Subscription 
+Resource Group
+RBAC
+App Registrations 
+Managed Identity
+Virtual Network with Subnets, NIC, Public IP and Security Group
+Virtual Machine
+Recovery Service Vault
+Attaching and Mounting a New Disk to VM
+Availability set and Availablity Zone
+VNet Peering
+Azure Storage Classes
+Storage Account
+SQL Server with SQL Databases and Elastic Pools.
+Accessing SQL Database through Private Endpoint.  
+Azure App Service with Functions Apps and App Service Plans
+Application insights
+Automation Account
+CDN
+Azure Key Vault
+Monitoring and Alert 
+Azure Dashboards
+Cost and Billing 
+Help and Support

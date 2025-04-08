@@ -1,0 +1,72 @@
+Note: If you won't create AKS and Resource Group with name mentioned in the lab then
+      you have to change the names of these resources in variables file given in 
+      devops repo. 
+
+1- Create Azure Container Registry in 'rg' resource group
+
+2- Service Connections: 
+ a) Create a Docker registry Service Connection in Azure DevOps Portal and name it
+    as 'dockerRegistryServiceConnection'
+ b) Create App registration in Azure Portal. Now to go to Azure DevOps portal and 
+    create Azure Resource Manager Service Connection using ids of the App 
+    registration you created. Name this service connection as 'helm-lab-connection'
+    Give Contributer right to this app registration at Subscription and ACR Pull and 
+    ACR Push rights at Azure Container Registry 
+
+3- Git Repos Creation: 
+ a) Create 3 repos named as devops, app1, app2. 
+ b) clone them to your machine. copy and paste the respective files to each repo and 
+    push the files. The files are provided in the lab
+
+4- Create AKS cluster named as 'aks151' in 'rg' resource group
+   Connect to the cluster and create imagePullSecret 
+   kubectl create secret docker-registry acr-secret --namespace default --docker-server=ACR_Name.azurecr.io --docker-username=Application_ID --docker-password=Client_Secret
+
+5- Create Pipelines
+ a) You have to create 3 pipelines. One to push helm chart to ACR whenever there is
+    a change in Helm configs. The other 2 pipelines would be for deploying the 2
+    applications for which we created the repos. 
+ b) Creating Push Helm Chart Pipeline
+    - Go to Pipelines and click on Create New Pipeline. 
+    - Select devops repo
+    - On templates tab click on Create Classic Pipeline builder 
+    - Select the empty pipeline template
+    - Add source as Azure Repos and select devops as repo and main as branch
+    - Name the pipeline and select ubuntu latest as the agent in Build pipeline tab
+    - Now add install Helm Installer Tool task to the pipeline. You can find this 
+      task in depreciated option
+    - change the helm specific version to 3.3.3
+    - Now add another task to pipeline. The task is azure cli. 
+    - change its version to 1. 
+    - in the Azure Subscription option select the service connection 
+     'helm-lab-connection' which you created before
+    - select inline script in script location
+    - Paste the following script in inline script box
+      az configure --defaults acr=$(acr_name)
+      az acr helm repo add
+      helm package manifest-chart
+      az acr helm push --force manifest-chart-*.tgz
+    - check the box for Access service principal details in script option
+    - Now go to Triggers tab and enable continous integration. 
+    - In Branch Filters option select main as the branch
+    - In Path Filters option add a path. In type select include and give the 
+      following path '/manifest-chart'
+    - Now go to variables tab and add a new pipeline variable. 
+      acr_name: your Azure Container Registry name 
+ c) Create Pipeline for App1
+    - Go to Pipelines and click on Create New Pipeline. 
+    - Select app1 repo
+    - On templates tab click on Create Pipeline form Yaml file
+    - select the pipeline in app1 repos
+ d) Create Pipeline for App2
+    - Go to Pipelines and click on Create New Pipeline. 
+    - Select app2 repo
+    - On templates tab click on Create Pipeline form Yaml file
+    - select the pipeline in app2 repos
+ e) Once all three pipelines are created now run the pipelines in following order
+    First run Helm Chart Pipeline
+    If the Helm Chart pipeline is succeeded run the other two pipelines. 
+    after all the deployments are done successfully connect to the cluster 
+    and hit the apps using load balancer IPs. 
+
+    

@@ -1,0 +1,100 @@
+Q-1: Questions regarding Commands
+Ans: https://dockerlabs.collabnix.com/docker/cheatsheet/ 
+
+Q-2: Difference between Dockerfile and Docker compose
+Ans: https://dockerlabs.collabnix.com/beginners/difference-compose-dockerfile.html
+
+Q-3: Questions regarding Docker Infrastructure
+Ans: https://docs.docker.com/get-started/overview/ 
+
+Q-4: Docker Expose vs Docker publish 
+Ans: https://www.baeldung.com/ops/docker/expose-vs-publish
+
+Q-5: Docker Networking
+Ans: https://docs.docker.com/network/
+
+Q-6: Docker images vs containers 
+Ans: https://www.knowledgehut.com/blog/devops/docker-vs-container
+
+Q-7: ADD vs COPY in a Dockerfile
+Ans: https://www.geeksforgeeks.org/difference-between-the-copy-and-add-commands-in-a-dockerfile/
+
+Q-8: Docker volume types
+Ans: https://spin.atomicobject.com/2019/07/11/docker-volumes-explained/
+
+Q-9: Docker namespace
+Ans: A namespace is basically a Linux feature that ensures OS resources partition in a mutually exclusive manner. 
+     This forms the core concept behind containerization as namespaces introduce a layer of isolation amongst the containers. 
+     In docker, the namespaces ensure that the containers are portable and they don't affect the underlying host. 
+     Examples for namespace types that are currently being supported by Docker – PID, Mount, User, Network, IPC.
+
+Q-10: On what circumstances will you lose data stored in a container?
+Ans: The data of a container remains in it until and unless you delete the container.
+
+Q-11: Can a paused container be removed from Docker?
+Ans: No, it is not possible! A container MUST be in the stopped state before we can remove it.
+
+Q-12: Can a container restart by itself?
+Ans: Yes, it is possible only while using certain docker-defined policies while using the docker run command. Following are the available policies:
+
+    1. Off: In this, the container won’t be restarted in case it's stopped or it fails.
+    2. On-failure: Here, the container restarts by itself only when it experiences failures not associated with the user.
+    3. Unless-stopped: Using this policy, ensures that a container can restart only when the command is executed to stop it by the user.
+    4. Always: Irrespective of the failure or stopping, the container always gets restarted in this type of policy.
+
+    These policies can be used as:
+    docker run -dit — restart [restart-policy-value] [container_name] 
+
+Q-13: Can you tell the differences between a docker Image and Layer?
+Ans: Image: This is built up from a series of read-only layers of instructions. 
+     An image corresponds to the docker container and is used for speedy operation due to the caching mechanism of each step.
+     Layer: Each layer corresponds to an instruction of the image’s Dockerfile. 
+     In simple words, the layer is also an image but it is the image of the instructions run.
+
+Q-14: Where are docker volumes stored in docker?
+Ans: Volumes are created and managed by Docker and cannot be accessed by non-docker entities. They are stored in Docker host filesystem at /var/lib/docker/volumes/
+
+Q-15: Questions Regarding Dockerfile Components 
+Ans: https://blog.knoldus.com/docker-dockerfile/
+
+Q-16: Questions Regarding Docker Compose 
+Ans: https://www.simplilearn.com/tutorials/docker-tutorial/docker-compose
+
+Q-17: Differentiate between Daemon Logging and Container Logging?
+Ans: In docker, logging is supported at 2 levels and they are logging at the Daemon level or logging at the Container level.
+    
+    Daemon Level: This kind of logging has four levels- Debug, Info, Error, and Fatal.
+    - Debug has all the data that happened during the execution of the daemon process.
+    - Info carries all the information along with the error information during the execution of the daemon process.
+    - Errors have those errors that occurred during the execution of the daemon process.
+    - Fatal has the fatal errors that occurred during the execution.
+    Container Level:
+    - Container level logging can be done using the command: sudo docker run –it <container_name> /bin/bash
+    - In order to check for the container level logs, we can run the command: sudo docker logs <container_id>
+
+Q-18: What is the way to establish communication between docker host and Linux host?
+Ans: This can be done using networking by identifying the “ipconfig” on the docker host. 
+     This command ensures that an ethernet adapter is created as long as the docker is present in the host.
+
+Q-19: Difference between CMD and ENTRYPOINT
+Ans: CMD command provides executable defaults for an executing container. 
+     In case the executable has to be omitted then the usage of ENTRYPOINT instruction along with the JSON array format has to be incorporated.
+     ENTRYPOINT specifies that the instruction within it will always be run when the container starts. 
+     This command provides an option to configure the parameters and the executables. 
+     If the DockerFile does not have this command, then it would still get inherited from the base image mentioned in the FROM instruction.
+     - The most commonly used ENTRYPOINT is /bin/sh or /bin/bash for most of the base images.
+     As part of good practices, every DockerFile should have at least one of these two commands.
+
+Q-20: Can we use JSON instead of YAML while developing docker-compose file in Docker?
+Ans: Yes! It can be used. In order to run docker-compose with JSON, docker-compose -f docker-compose.json up can be used.
+
+Link for more questions https://www.interviewbit.com/docker-interview-questions/
+
+
+
+
+
+
+
+
+

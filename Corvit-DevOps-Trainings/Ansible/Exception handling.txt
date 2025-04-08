@@ -1,0 +1,29 @@
+Exception handling in Ansible is similar to exception handling in any programming language. 
+An example of the exception handling in playbook is shown below.
+
+tasks: 
+   - name: Name of the task to be executed 
+      block: 
+         - debug: msg = 'Just a debug message , relevant for logging' 
+         - command: <the command to execute> 
+      
+      rescue: 
+         - debug: msg = 'There was an exception.. ' 
+         - command: <Rescue mechanism for the above exception occurred) 
+      
+      always: 
+         - debug: msg = "this will execute in all scenarios. Always will get logged"
+
+Following is the syntax for exception handling.
+
+    rescue and always are the keywords specific to exception handling.
+
+    Block is where the code is written (anything to be executed on the Unix machine).
+
+    If the command written inside the block feature fails, then the execution reaches rescue block and it gets executed. In case there is no error in the command under block feature, then rescue will not be executed.
+
+    Always gets executed in all cases.
+
+    So if we compare the same with java, then it is similar to try, catch and finally block.
+
+    Here, Block is similar to try block where you write the code to be executed and rescue is similar to catch block and always is similar to finally.

@@ -1,0 +1,56 @@
+Creating a New Role
+
+The directory structure for roles is essential to create a new role.
+Role Structure
+
+Roles have a structured layout on the file system. The default structure can be changed but for now let us stick to defaults.
+
+Each role is a directory tree in itself. The role name is the directory name within the /roles directory.
+
+$ ansible-galaxy -h 
+
+Usage
+
+ansible-galaxy [delete|import|info|init|install|list|login|remove|search|setup] [--help] [options] ... 
+
+Options
+
+    -h, --help − Show this help message and exit.
+
+    -v, --verbose − Verbose mode (-vvv for more, -vvvv to enable connection debugging)
+
+    --version − Show program's version number and exit.
+----------------------------------------------------------
+
+Creating a Role Directory
+
+The above command has created the role directories
+$ sudo ansible-galaxy init faranrole
+                 OR
+$ sudo ansible-galaxy init --force --offline faranrole
+
+$ sudo apt  install tree 
+$ tree faranrole/ 
+faranrole/
+├── README.md
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml 
+ 
+8 directories, 8 files
+
+
+
+

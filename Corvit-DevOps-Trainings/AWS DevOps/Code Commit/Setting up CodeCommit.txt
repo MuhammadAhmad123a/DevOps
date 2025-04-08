@@ -1,0 +1,20 @@
+You can not access AWS CodeCommit Repos with your AWS Root Account so we need to create an IAM user. 
+
+Create CodeCommit repo with Root user. 
+
+Now Create IAM user and Assign Administrator Access to the user. 
+
+Now login from your IAM user account. 
+
+Place SSh public key in the IAM User SSh key section and copy the SSh key ID for later use. 
+
+go to you .ssh folder and create a file named config with the following configs: 
+Host git-codecommit.*.amazonaws.com
+User Your-IAM-SSH-Key-ID-Here
+IdentityFile ~/.ssh/Your-Private-Key-File-Name-Here
+
+now go to repository and copy ssh url to clone the repo. 
+
+
+
+

@@ -1,0 +1,55 @@
+Create a New Repository . 
+
+Place all these folders plus the files as they are in the heirarchy. 
+
+Create Pipeline from terraform-pipeline.yml file.
+
+Create a Service Connection. Give the service connection rights to the Subscription. 
+
+Assign Storage Account Contributer Access to the Subscription for your service connection 
+
+Create the following three variable group with respective variables. Link all three groups with your pipeline. 
+Create variables and variable groups with same name otherwise you had to change in the file as well.
+
+------
+Common-terraform-variables
+
+azureSubscription : Azure subscription 1 (fc997bed-d9b5-4aa5-b36c-aae8c6c06000) (This should be the name of your service connection)
+location : northcentralus
+resourceGroupName: statefile-rg
+storageAccount: statefilesa151
+SubscriptionId: fc997bed-d9b5-4aa5-b36c-aae8c6c06000 (This should be the ID of your Subscription)
+templateFile: ./shared-resources/storage.bicep
+TenandID : 51f4484e-83bb-48c8-83b4-e3dc759e2531 (This should be the ID of your Directory)
+------
+
+------
+Dev-terraform-variables
+
+Container: devstatefilecnotainer
+stateFile: dev.terraform.tfstate
+strinitial: test
+TfvarEnvFile: dev.terraform.tfvars
+tfvarFile: $(System.DefaultWorkingDirectory)/variables/dev.terraform.tfvars
+------
+
+------
+Qa-terraform-variables
+
+Container: qastatefilecontainer
+stateFile: qa.terraform.tfstate
+TfvarEnvFile: qa.terraform.tfvars
+tfvarFile: $(System.DefaultWorkingDirectory)/variables/qa.terraform.tfvars 
+------
+
+
+After Linking the variable groups now go and run the Pipeline. 
+While running the pipeline you would be promted to select between DEV or QA. Select any of the value, the respective ENV would be created. 
+Wait for the Pipeline to be successfully complete then check Azure Portal for the resources created. 
+
+
+
+
+
+
+

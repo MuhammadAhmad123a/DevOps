@@ -1,0 +1,133 @@
+Q-1: IaaS, PaaS, SaaS
+Ans: https://www.bmc.com/blogs/saas-vs-paas-vs-iaas-whats-the-difference-and-how-to-choose/
+
+Q-2: Define Amazon EC2 regions and availability zones?
+Ans: Availability zones are geographically separate locations. 
+     As a result, failure in one zone has no effect on EC2 instances in other zones. 
+     When it comes to regions, they may have one or more availability zones. 
+     This configuration also helps to reduce latency and costs.
+
+Q-3: With specified private IP addresses, can an Amazon Elastic Compute Cloud (EC2) instance be launched? 
+     If so, which Amazon service makes it possible?
+Ans: Yes. Utilizing VPC makes it possible (Virtual Private Cloud).
+
+Q-4: Explain Amazon EC2 root device volume?
+Ans: The image that will be used to boot an EC2 instance is stored on the root device drive. 
+     This occurs when an Amazon AMI runs a new EC2 instance. 
+     And this root device volume is supported by EBS or an instance store. 
+     In general, the root device data on Amazon EBS is not affected by the lifespan of an EC2 instance.
+
+Q-5: What is the difference between a Spot Instance, an On-demand Instance, and a Reserved Instance?
+Ans: Spot instances are unused EC2 instances that users can use at a reduced cost.
+
+When you use on-demand instances, you must pay for computing resources without making long-term obligations.
+
+Reserved instances, on the other hand, allow you to specify attributes such as instance type, platform, tenancy, region, and availability zone. Reserved instances offer significant reductions and capacity reservations when instances in certain availability zones are used.
+
+Q-6: What is geo-targeting in CloudFront?
+Ans: Geo-Targeting is a concept where businesses can show personalized content to their audience based on their geographic location without changing the URL.
+     This helps you create customized content for the audience of a specific geographical area, keeping their needs in the forefront.
+
+Q-7: How do you upgrade or downgrade a system with near-zero downtime?
+Ans: You can upgrade or downgrade a system with near-zero downtime using the following steps of migration:
+
+    Open EC2 console
+    Choose Operating System AMI
+    Launch an instance with the new instance type
+    Install all the updates
+    Install applications
+    Test the instance to see if it’s working
+    If working, deploy the new instance and replace the older instance
+    Once it’s deployed, you can upgrade or downgrade the system with near-zero downtime.
+
+Q-8: How many S3 buckets can be created?
+Ans: Up to 100 buckets can be created by default.
+
+Q-9: What is the maximum limit of elastic IPs anyone can produce?
+Ans: A maximum of five elastic IP addresses can be generated per location and AWS account.
+
+Q-10: How do you set up SSH agent forwarding so that you do not have to copy the key every time you log in?
+Ans: Here’s how you accomplish this:
+
+    Go to your PuTTY Configuration
+    Go to the category SSH -> Auth
+    Enable SSH agent forwarding to your instance
+
+Q-11: How do you configure CloudWatch to recover an EC2 instance?
+Ans: Here’s how you can configure them:
+
+    Create an Alarm using Amazon CloudWatch
+    In the Alarm, go to Define Alarm -> Actions tab
+    Choose Recover this instance option
+
+Q-12: How do you allow a user to gain access to a specific bucket?
+Ans: You need to follow the four steps provided below to allow access. They are:
+
+    Categorize your instances
+    Define how authorized users can manage specific servers.
+    Lockdown your tags
+    Attach your policies to IAM users
+
+Q-13: Name and explain some security products and features available in VPC?
+Ans: Here is a selection of security products and features:
+
+    Security groups - This acts as a firewall for the EC2 instances, controlling inbound and outbound traffic at the instance level.
+    Network access control lists - It acts as a firewall for the subnets, controlling inbound and outbound traffic at the subnet level.
+    Flow logs - These capture the inbound and outbound traffic from the network interfaces in your VPC
+
+Q-14: What Are the Benefits of AWS’s Disaster Recovery?
+Ans: Businesses use cloud computing in part to enable faster disaster recovery of critical IT systems without the cost of a second physical site. 
+The AWS cloud supports many popular disaster recovery architectures ranging from small customer workload data center failures to environments that enable rapid failover at scale. 
+With data centers all over the world, AWS provides a set of cloud-based disaster recovery services that enable rapid recovery of your IT infrastructure and data.
+
+Q-15: How can you add an existing instance to a new Auto Scaling group?
+Ans: Here’s how you can add an existing instance to a new Auto Scaling group:
+
+    Open EC2 console
+    Select your instance under Instances
+    Choose Actions -> Instance Settings -> Attach to Auto Scaling Group
+    Select a new Auto Scaling group
+    Attach this group to the Instance
+    Edit the Instance if needed
+    Once done, you can successfully add the instance to a new Auto Scaling group
+
+Q-16: What are the advantages of AWS IAM?
+Ans: AWS IAM allows an administrator to provide multiple users and groups with granular access. 
+Various user groups and users may require varying levels of access to the various resources that have been developed. 
+We may assign roles to users and create roles with defined access levels using IAM.
+It further gives us Federated Access, which allows us to grant applications and users access to resources without having to create IAM Roles.
+
+Q-17: How can you automate EC2 backup using EBS?
+Ans: Use the following steps in order to automate EC2 backup using EBS:
+
+    Get the list of instances and connect to AWS through API to list the Amazon EBS volumes that are attached locally to the instance.
+    List the snapshots of each volume, and assign a retention period of the snapshot. Later on, create a snapshot of each volume.
+    Make sure to remove the snapshot if it is older than the retention period.
+
+Q-18:  What is the difference between EBS and Instance Store?
+Ans: EBS is a kind of permanent storage in which the data can be restored at a later point. 
+When you save data in the EBS, it stays even after the lifetime of the EC2 instance. On the other hand, Instance Store is temporary storage that is physically attached to a host machine. 
+With an Instance Store, you cannot detach one instance and attach it to another. Unlike in EBS, data in an Instance Store is lost if any instance is stopped or terminated.
+
+Q-19: What are the different types of load balancers in AWS?
+Ans: There are three types of load balancers that are supported by Elastic Load Balancing:
+
+    Application Load Balancer
+    Network Load Balancer
+    Classic Load Balancer
+
+Q-20: What is the difference between an IAM role and an IAM user?
+Ans: The two key differences between the IAM role and IAM user are:
+
+    An IAM role is an IAM entity that defines a set of permissions for making AWS service requests, while an IAM user has permanent long-term credentials and is used to interact with the AWS services directly.  
+    In the IAM role, trusted entities, like IAM users, applications, or an AWS service, assume roles whereas the IAM user has full access to all the AWS IAM functionalities.
+
+
+For More Browse Link : https://www.simplilearn.com/tutorials/aws-tutorial/aws-interview-questions
+
+
+
+
+
+
+

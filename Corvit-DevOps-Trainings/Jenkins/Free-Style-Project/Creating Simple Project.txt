@@ -1,0 +1,9 @@
+Click on New Item. 
+Give name of your Project and Select Free Style Project. 
+In Build Steps Section choose Execute Shell Option. 
+
+Paste echo 'hello world'
+
+Save the build. 
+
+Run the Build and monitor the output in Console output. 

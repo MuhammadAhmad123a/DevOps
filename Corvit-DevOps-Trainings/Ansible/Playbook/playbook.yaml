@@ -1,0 +1,17 @@
+--- 
+# Install Ansible Extension
+
+   name: install and configure DB
+   hosts: testServer
+   become: yes
+
+   vars: 
+      oracle_db_port_value : 1521
+   
+   tasks:
+   -name: Install the Oracle DB
+      yum: <code to install the DB>
+    
+   -name: Ensure the installed service is enabled and running
+   service:
+      name: <your service name>

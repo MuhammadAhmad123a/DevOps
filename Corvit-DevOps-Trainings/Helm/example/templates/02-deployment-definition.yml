@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: #Dictionary
+  name: "{{ .Values.name }}"
+spec: # Dictionary
+  replicas: 6
+  selector:
+    matchLabels:
+      app: "{{ .Values.app }}"
+  template:  
+    metadata: # Dictionary
+      name: "{{ .Values.name }}"
+      labels: # Dictionary
+        app: "{{ .Values.app }}"  # Key value paids
+    spec:
+      containers: # List
+        - name: "{{ .Values.containername }}"
+          image: "{{ .Values.image.imagerepo }}/{{ .Values.image.imagename }}:{{ .Values.image.imagetag }}"
+          ports: 
+            - containerPort: 8080  
+
+
+    

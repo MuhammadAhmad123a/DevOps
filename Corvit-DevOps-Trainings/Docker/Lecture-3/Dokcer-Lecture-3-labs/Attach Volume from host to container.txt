@@ -1,0 +1,16 @@
+Create EC2 instance with ubuntu OS
+
+Install Docker 
+sudo apt-get update
+sudo apt-get install docker.io
+
+sudo docker run -it --name hostcont -v /home/ubuntu/dir:/volume --privileged=true ubuntu /bin/bash
+
+ls 
+cd volume 
+touch file1 file2
+exit
+
+cd /home/ubuntu
+ls
+you can see file1 and file2 here

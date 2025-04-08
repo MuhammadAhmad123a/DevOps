@@ -1,0 +1,19 @@
+Create Dockerfile
+
+Create image from Dockerfile
+docker build -t myimage .
+
+Create Container1 with myvolume1
+docker run -it --name Container1 myimage /bin/bash
+
+ls (to check if myvolume1 directory is created or not)
+
+Now create another Container2 and share myvolume1 with it 
+docker run -it --name Container2 --privileged=true --volumes-from Container1 ubuntu /bin/bash
+
+Now after Creating Container2, myvolume1 is visible whaterver you do in One volume can see from other Volume
+touch /myvolume1/testfile
+Docker start Container1
+docker attach Container1
+ls/myvolume1
+you can see the testfile

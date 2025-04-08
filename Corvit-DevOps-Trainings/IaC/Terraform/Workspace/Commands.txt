@@ -1,0 +1,12 @@
+# To list the workspaces
+terraform workspace list
+
+# To create a new workspace
+terraform workspace new dev
+
+# To switch to the other workspace
+terraform workspace select default
+
+Change the workspace first and the modify configs and apply. 
+
+Remember to maintain separte state file for every workspace and place them at separate locations

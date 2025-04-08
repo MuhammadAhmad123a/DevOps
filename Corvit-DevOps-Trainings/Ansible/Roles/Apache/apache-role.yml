@@ -1,0 +1,10 @@
+---
+- name: Playbook for Configuring Apache
+  hosts: appacheserver
+  become: true
+
+  roles:
+    - install-apache
+    - start-apache
+  
+

@@ -1,0 +1,3 @@
+https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html
+
+https://cloudkatha.com/how-to-deploy-cloudformation-template-using-aws-cli/

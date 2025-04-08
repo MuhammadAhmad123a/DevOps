@@ -1,0 +1,18 @@
+Create ACR and also enable admin access
+Go to Azure DevOps and then to settings and create a new service connection. Create new Docker Registry Service Connection.
+Select Azure Container Registry as your registry. Select Subscription and choose your registry. Grant all pipelines to access the registry and create service connection
+Now create a repo
+Place Dockerfile, index.html and azure-pipelines.yaml files to the repo. 
+Now create new pipeline through starter pipeline from yaml and select azure-pipeline.yaml which you uploaded in the repo. 
+Remember to change the dockerRegistryServiceConnection, imageRepository and containerRegistry values in variables section according to your settings. 
+Also change values in inlinescript available in Deploy stage Azure CLI task, according to your configurations in ACR. Need to change Container name, image, dns-name, registry-login-server, registry-username, registry-password.
+
+Instead of creating pipeline from the azure-pipelines.yaml you can create pipeline from a predefined template. You can use Build and Push Docker template to build image from Dockerfile and push to ACR but you would still had to add Azure CLI task in that template. 
+You can copy paste Azure CLI task but remember to change the values in script according to your configs
+
+Run the pipeline, you need to permit the pipeline to access the Azure resources. 
+After pipeline is successfuly executed, check ACR and see if your image is pushed to the ACR Repository 
+Go to Azure Container Instance and Browse FQDN URL. 
+
+Make some changes in index.html and run pipeline. 
+After successfull completion of pipeline browse FQDN again and see changes.   

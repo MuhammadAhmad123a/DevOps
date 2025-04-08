@@ -1,0 +1,35 @@
+Jenkings Installation on Windows
+https://www.javatpoint.com/installing-jenkins-on-windows
+
+Jenkins Installation on Ubuntu
+https://www.jenkins.io/doc/book/installing/linux/
+https://www.javatpoint.com/installing-jenkins-on-ubuntu
+
+Configuring Jenkins on AWS EC2 Ubuntu Machine
+Create latest Ubuntu Machine. 
+Allow SSH and Custom TCP port 8080 as 8080 is default port of Jenkins. 
+
+$ sudo apt update
+$ sudo apt install openjdk-11-jre
+$ java -version
+$ curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+$ sudo apt-get update
+$ sudo apt-get install jenkins
+$ sudo service jenkins status
+
+http//:machine-public-ip:8080 (this would be the Admin UI for Jenkins)
+
+get password for admin ui from the following command
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+create the admin user and set your jenkins url (http://43.207.121.149:8080/). 
+
+
+
+
+ 

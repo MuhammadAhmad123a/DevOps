@@ -1,0 +1,9 @@
+docker run -it --name container4 -v /volume2 ubuntu /bin/bash
+
+ls
+cd volume2
+touch file1 file2
+
+docker run -it --name Container5 --privileged=true --volumes-from container4 ubuntu /bin/bash
+ls 
+cd volume2

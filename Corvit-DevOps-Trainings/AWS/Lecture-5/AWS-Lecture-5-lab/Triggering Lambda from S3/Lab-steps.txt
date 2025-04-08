@@ -1,0 +1,13 @@
+Create IaM Role for AWS Service (AWS Lambda) and grant DynamoDb Full Access Policy
+
+Create S3 Bucket with public Access Enabled
+
+Create Dynamo DB table (newtable) and partition key (unique)
+
+Create AWS Lambda Function with Python 3.7 Runtime, use existing role and assign role created earlier in lab.
+Paste Code in Function Code option
+Add a trigger and select S3 bucket. 
+
+Upload Files in S3 bucket and check items in DynamoDB.
+Click on Items and Run Scan
+ 

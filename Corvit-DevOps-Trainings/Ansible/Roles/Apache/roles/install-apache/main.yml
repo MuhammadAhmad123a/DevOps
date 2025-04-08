@@ -1,0 +1,10 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install Apache package
+  apt:
+    name: apache2
+    state: present
+

@@ -1,0 +1,30 @@
+Go to Jenkins Console
+Click on New item. Select Pipeline and give name and create. 
+Now in General Sections Check Github Project and provide your repo URL
+In Build Triggers Section check "GitHub hook trigger for GITScm polling" option
+
+In Pipeline Section for definition select Pipeline script. 
+Select hello world sample script
+Use Pipeline syntax to generate accurate syntax for any task you want. In our case git and shell
+ 
+
+Now configure the pipeline with following script.
+
+pipeline {
+    agent any
+
+    stages {
+        stage('source') {
+            steps {
+                echo 'Hello World'
+                git branch: 'main', url: 'https://github.com/MORG151/jenkings-lab-repo'
+                sh 'cat index.html'
+            }
+        }
+    }
+}
+
+
+
+Save the configs and run the build. 
+Changes the content of index.html and push it to the repo. pipeline would be triggred automatically

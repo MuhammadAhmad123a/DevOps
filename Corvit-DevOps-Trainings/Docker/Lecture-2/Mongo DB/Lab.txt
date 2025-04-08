@@ -1,0 +1,6 @@
+docker pull mongo
+docker run --name mymongocontainer -d mongo
+docker exec -it mymongocontainer mongosh
+use tempdb
+
+

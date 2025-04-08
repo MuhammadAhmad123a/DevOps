@@ -1,0 +1,15 @@
+Create 2 S3 Buckets with public Access Enabled.
+upload test.jpg file in source bucket with public access enabled
+
+Create a new IAM Policy for this lab using policy.json file. 
+Replace your buckets names in the policy and create role from it. 
+
+Create AWS Lambda Function with Node 18.x Runtime, use existing role and assign role created earlier in lab
+Upload the function.zip file to lambda function
+Create a Environemnt Varible in Lambda Configuration (DEST_BUCKET)
+Add a trigger and select source S3 bucket. 
+
+
+To test the connection go to test tab of lambda function, create new event and give "Upload" name of event. Event sharing setting should be shareable and select "S3 PUT" template. 
+Change the name of your source bucket in config at 2 spots. plus also add your file name (test.jpg) which you uploaded at your source bucket. Save and Test, if the test succeeded the file would be in destination bucket.
+Now directly upload another file in source S3 bucket and check the other bucket to see the resized image

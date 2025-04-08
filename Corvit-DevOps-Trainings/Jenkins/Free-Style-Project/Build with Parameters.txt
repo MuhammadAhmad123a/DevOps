@@ -1,0 +1,24 @@
+Go to Your project and select configure option. 
+
+Click "This project is parameterize " and add parameters
+
+Add 2 parameters. 
+
+Add a string parameter 
+Name: Project Name
+Value: Demo
+
+Add a File Parameter
+Location: Sample.txt
+
+Then in Build Steps option provide following code. 
+echo 'hello world'
+echo "Project Name is $ProjectName"
+cat Sample.txt
+Save the Build
+
+Now go to Build with Parameters option and Provide the sample.txt file
+
+Click on build and monitor the output
+
+Change the values of Parameters and check output for practice. 

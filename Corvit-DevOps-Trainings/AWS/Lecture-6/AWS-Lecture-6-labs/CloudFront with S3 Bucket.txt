@@ -1,0 +1,9 @@
+Create S3 Bucket with Public Access Enabled
+Upload a file on S3 Bucket
+
+Create CloudFront Service 
+Select your S3 Bucket
+Left all other settings as default
+Copy domain name and browse with name of your file which you uploaded in S3
+
+for example d15tmb9cdon5nt.cloudfront.net/file.txt

@@ -1,0 +1,17 @@
+ssh-keygen -C "email addess"
+
+(paste public key in remote repos connections)
+
+git clone <repository URL>
+
+git checkout -b newbranch 
+
+(add files)
+
+git add .
+
+git status 
+
+git commit -m "added new file"
+
+git push origin newbranch 

@@ -1,0 +1,15 @@
+Create docker-compose file with .yaml extension
+Create app.py
+Create requirements.txt
+Create Dockerfile
+
+docker-compose up (fow windows)
+sudo ./docker-compose up  (for linux)
+
+Once Contianers are running switch to another terminal and run
+docker ps -a
+
+browse the localhost:8000 muliple times and see the change
+
+to stop Ctrl+C or 
+docker-compose down

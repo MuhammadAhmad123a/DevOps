@@ -1,0 +1,24 @@
+In tomcat-role.yml we have defined the hosts: webservers and called the two roles – install-tomcat and start-tomcat.
+create tomcat-role.yml in /etc/ansible/. 
+$ sudo nano tomcat-role.yml. Place the following code 
+--- 
+- hosts: webservers 
+- roles: 
+   - {role: install-tomcat} 
+   - {role: start-tomcat} 
+
+Create Roles
+
+/etc/ansible/roles$ sudo ansible-galaxy init install-tomcat
+/etc/ansible/roles$ sudo ansible-galaxy init start-tomcat
+
+There is a tasks directory under each role directory and it contains a main.yml.
+Configure main.yml of install-tomcat + start-tomcat
+
+/etc/ansible/roles/install-tomcat/tasks$ sudo nano main.yml
+/etc/ansible/roles/start-tomcat/tasks$ sudo nano main.yml
+
+/etc/ansible$ ansible-playbook tomcat-role.yml
+
+Note : The advantage of breaking the playbook into roles is that anyone who wants to use the Install tomcat feature can call the Install Tomcat role
+

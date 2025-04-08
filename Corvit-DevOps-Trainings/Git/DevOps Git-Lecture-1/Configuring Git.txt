@@ -1,0 +1,19 @@
+(Initialization)
+git init 
+
+(Username and Email)
+git config --global user.name "faran tahir"
+git config --global user.email  muhammad.faran151@gmail.com
+
+(Default Editor)
+code
+git config --global core.editor "code --wait"
+git config --global -e
+
+(Line Ending)
+git config --global core.autocrlf input (Mac/Linux)
+git config --global core.autocrlf true (Windows)
+
+(Help)
+git config --help
+git config --h

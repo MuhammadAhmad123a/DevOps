@@ -1,0 +1,32 @@
+Create VNET and VNET Gateway. 
+
+https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+
+Create VM in the VNET. 
+
+Create Enterprise Application and give Admin Consent. 
+
+https://learn.microsoft.com/en-us/azure/vpn-gateway/openvpn-azure-ad-tenant
+
+Configure Point to Site Configuration in VNET Gateway. 
+
+https://www.cloudthat.com/resources/blog/microsoft-azure-active-directory-aad-authentication-to-connect-point-to-site-vpn
+
+Download and install Azure VPN Client 
+
+Download VPN Client Profile from VNET Gateway. Import the Profile into the Azure VPN Client. 
+
+Connect to VPN
+
+For VM 
+Just Try to connect through the Private IP. 
+
+For Storage Account and SQL Server. 
+Disable Public Access and Create a private endpoint with private DNS option enabled. 
+Place Respective entries in you machine's host file. (for windows c:\Windows\System32\Drivers\etc\hosts)
+flush dns (for windows ipconfig /flushdns)
+Then try to connect. 
+
+https://login.microsoftonline.com/51f4484e-83bb-48c8-83b4-e3dc759e2531/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
+https://login.microsoftonline.com/51f4484e-83bb-48c8-83b4-e3dc759e2531/
+https://sts.windows.net/51f4484e-83bb-48c8-83b4-e3dc759e2531/

@@ -1,0 +1,3 @@
+Create s3-bucket.yml
+
+aws cloudformation deploy --template-file s3-bucket.yml --stack-name static-website-12345678

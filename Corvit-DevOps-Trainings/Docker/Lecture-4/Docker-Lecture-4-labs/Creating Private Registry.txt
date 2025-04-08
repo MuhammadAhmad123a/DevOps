@@ -1,0 +1,32 @@
+
+docker run –d –p 5000:5000 –-name registry registry:2
+
+Hence with the –p command, we are mapping the same port number to the 5000 port number on our localhost.
+We are just tagging the registry container as “2”, to differentiate it on the Docker host.
+The –d option is used to run the container in detached mode. This is so that the container can run in the background
+
+See that the registry container is indeed running
+docker ps
+
+Now tag an existing image in order to push it to our private registry
+ 
+docker images (capture image id of ubuntu)
+docker tag 99284ca6cea0 localhost:5000/ubunturepo
+
+74f2314a03de refers to the Image ID for the ubuntu image.
+localhost:5000 is the location of our private repository.
+We are tagging the repository name as ubunturepo in our private repository.
+
+Pushing the ubunturepo image to the private repository hosted at localhost:5000
+docker push localhost:5000/ubunturepo
+
+delete ubuntu image and localhost:5000/ubunturepo (if created)
+docker rmi ubuntu:latest OR docker rmi <imageID>
+
+pull image from private repo
+docker pull localhost:5000/ubunturepo
+
+
+
+
+ 
