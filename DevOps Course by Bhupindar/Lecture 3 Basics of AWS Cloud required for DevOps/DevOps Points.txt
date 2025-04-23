@@ -1,0 +1,32 @@
+DevOps is successor/improvement of Agile methodology
+
+Agile has Silos issue
+Agile Development is at development level
+
+Agile is parallel, iterative and incremental approach
+Sprints break down a project into bite-sized chunks
+While sprints can certainly focus on delivering a small, focused set of features,
+ they are more accurately defined as a time-boxed period within which a team works to complete a specific set of work
+
+
+Cloud Providers
+AWS,
+AZURE
+GCP
+Alibaba
+
+
+AWS has 36 launched Regions, each with multiple Availability Zones, totaling 114 Availability Zones
+Whatever you are accessing from internet is cloud,
+(Cloud is a technology, which gives you ability to share your resources from a remote location)
+Definition: The cloud is a distributed collection of servers that host software and infrastructure, and it is accessed over the Internet
+
+
+Key-pair that we download from EC2 instance is used to create .ppk file
+
+Linux Commands
+Sudo su //give you access of all resources (you are now admin e.g. root user, after running this command), login as admin/root user
+
+
+
+
