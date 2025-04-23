@@ -13,5 +13,7 @@ Why organization needs DevOps Specialist?
 -- Less capex + opex
 -- Reduced outages
 
+Note: GitHub works at developer level and its very important. Interview starts from Git.
+
 
 
