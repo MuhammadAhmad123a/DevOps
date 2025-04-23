@@ -1,0 +1,17 @@
+DevOps Requirements
+
+Following things are not required:
+-- Programming language is required
+-- Linux experience is required
+-- Prior IT background is required
+-- Non technical background is not required
+
+
+Why organization needs DevOps Specialist?
+-- Fast devlivery
+-- Higher quality
+-- Less capex + opex
+-- Reduced outages
+
+
+
