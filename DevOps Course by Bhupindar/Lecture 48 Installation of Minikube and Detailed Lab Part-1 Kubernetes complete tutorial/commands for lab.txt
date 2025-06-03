@@ -1,0 +1,141 @@
+***********Command used in Lecture********************************
+ubuntu
+
+sudo su
+
+Now install docker
+
+sudo apt update && apt -y install docker.io
+
+//install Kubectl
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+
+//install Minikube
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+//start Minikube
+apt install conntrack
+
+minikube start --vm-driver=none
+
+minikube status
+
+kubectl version
+
+kubectl get nodes 
+
+kubectl describe node ip-172.31.34.55
+
+vi pod1.yml
+
+//paste below code inside file
+
+ ***************************************************************************
+kind: Pod                              
+apiVersion: v1                     
+metadata:                           
+  name: testpod                  
+spec:                                    
+  containers:                      
+
+    name: c00                     
+
+      image: ubuntu              
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+  restartPolicy: Never         # Defaults to Always
+
+
+//run below command to create and run pod1
+kubectl apply -f pod1.yml
+
+kubectl get pods
+
+kubectl get pods -o wide
+
+kubectl describe pod testpod
+
+//to see container details
+kubectl pods -f testpod
+ctrl+z
+
+//for specific container
+kubectl logs -f testpod -c conteinerName
+
+kubectl delete pod podname
+
+//Now add annotations in yml file and create pod
+
+Note: next commands are saved through snapshots
+
+
+************************************************************************************************************************************
+
+MULTI CONTAINER POD ENVIRONMENT 
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod3
+spec:
+  containers:
+
+    name: c00
+
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5 ; done"]
+
+    name: c01
+
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+
+Note: pod has ip while container has no ip
+
+
+
+
+*********************************************************************************************************************************
+POD ENVIRONMENT  VARIABLES
+
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: environments
+spec:
+  containers:
+
+    name: c00
+
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+      env:                        # List of environment variables to be used inside the pod
+
+    name: MYNAME
+
+        value: BHUPINDER
+
+
+
+************************************************************************************************************************************
+POD WITH PORTS
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod4
+spec:
+  containers:
+
+    name: c00
+
+      image: httpd
+      ports:
+
+    containerPort: 80  
+
+
+********************END*************************************************
+
