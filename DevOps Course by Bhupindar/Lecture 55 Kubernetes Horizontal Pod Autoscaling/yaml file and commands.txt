@@ -1,0 +1,116 @@
+LEC 55 NOTES #kubernetes
+====================
+ubuntu
+
+ Install Docker
+$  sudo apt update && apt -y install docker.io
+
+install Kubectl now with the given link
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+
+install Minikube with the given link
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+ Start Minikube
+$  apt install conntrack
+$  minikube start --vm-driver=none
+$  minikube status
+==============cpu2.yml=========================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-2
+spec:
+  containers:
+
+    name: default-cpu-demo-2-ctr
+
+    image: nginx
+    resources:
+      limits:
+        cpu: "1"
+=================================================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-3
+spec:
+  containers:
+
+    name: default-cpu-demo-3-ctr
+
+    image: nginx
+    resources:
+      requests:
+        cpu: "0.75"
+=================================MEMDEFAULT.YML========================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-min-max-demo-lr
+spec:
+  limits:
+
+    max:
+
+      memory: 1Gi
+    min:
+      memory: 500Mi
+    type: Container
+==========
+apiVersion: v1
+kind: Pod
+metadata:
+  name: constraints-mem-demo
+spec:
+  containers:
+
+    name: constraints-mem-demo-ctr
+
+    image: nginx
+    resources:
+      limits:
+        memory: "800Mi"
+      requests:
+        memory: "600Mi"
+
+
+    If request is not specified & limit is given, then request = limit
+
+=================
+$ wget -O metricserver.yml https://objects.githubusercontent.com/github-production-release-asset-2e65be/92132038/f6334dcd-6cea-4a2e-9d26-2bdefedf0f7b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T102139Z&X-Amz-Expires=300&X-Amz-Signature=3913005de72f9e97c7e18b8c1fb094ac8598830b7b15327c352ca928f784d994&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3Dcomponents.yaml&response-content-type=application%2Foctet-stream
+--------------
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: mydeploy
+spec:
+   replicas: 1
+   selector:
+    matchLabels:
+     name: deployment
+   template:
+     metadata:
+       name: testpod8
+       labels:
+         name: deployment
+     spec:
+      containers:
+
+    name: c00
+
+          image: httpd
+          ports:
+
+    containerPort: 80
+
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
+---------------------
+$ kubectl autoscale deployment mydeploy --cpu-percent=20 --min=1 --max=10
+--------------
