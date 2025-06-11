@@ -1,0 +1,149 @@
+LEC 54 NOTES TECHNICAL GUFTGU
+====================
+ubuntu
+
+ Install Docker
+$  sudo apt update && apt -y install docker.io
+
+install Kubectl now with the given link
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+
+install Minikube with the given link
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+ Start Minikube
+$  apt install conntrack
+$  minikube start --vm-driver=none
+$  minikube status
+
+==============================NAMESPACES===================================
+apiVersion: v1
+kind: Namespace
+metadata:
+   name: dev
+   labels:
+     name: dev
+
+=================================to create a pod=================
+vi pod.yml
+
+
+kind: Pod                              
+apiVersion: v1                     
+metadata:                           
+  name: testpod                  
+spec:                                    
+  containers:                      
+
+    name: c00                     
+
+      image: ubuntu              
+      command: ["/bin/bash", "-c", "while true; do echo Technical Guftgu; sleep 5 ; done"]
+  restartPolicy: Never       
+==============================================================================================
+
+$ kubectl config set-context $(kubectl config current-context) --namespace=dev
+$ kubectl config view | grep namespace:
+==============================================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resources
+spec:
+  containers:
+
+    name: resource
+
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5 ; done"]
+    resources:                                          
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+
+============RESOURCEQUOTA========================================
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+   name: myquota
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: "400Mi"
+    requests.cpu: "200m"
+    requests.memory: "200Mi"
+===========================================================
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: deployments
+spec:
+  replicas: 3
+  selector:      
+    matchLabels:
+     objtype: deployment
+  template:
+    metadata:
+      name: testpod8
+      labels:
+        objtype: deployment
+    spec:
+     containers:
+
+    name: c00
+
+         image: ubuntu
+         command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5 ; done"]
+         resources:
+            requests:
+              cpu: "200m"
+============================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+spec:
+  limits:
+
+    default:
+
+      cpu: 1
+    defaultRequest:
+      cpu: 0.5
+    type: Container
+
+==============cpu2.yml======================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-2
+spec:
+  containers:
+
+    name: default-cpu-demo-2-ctr
+
+    image: nginx
+    resources:
+      limits:
+        cpu: "1"
+=================================================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-3
+spec:
+  containers:
+
+    name: default-cpu-demo-3-ctr
+
+    image: nginx
+    resources:
+      requests:
+        cpu: "0.75"
+===============================================
